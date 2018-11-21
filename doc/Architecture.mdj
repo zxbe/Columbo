@@ -3807,7 +3807,7 @@
 											"font": "Arial;13;1",
 											"left": 704,
 											"top": 285,
-											"width": 120.29541015625,
+											"width": 141.26171875,
 											"height": 13,
 											"text": "UserIdentity"
 										},
@@ -3833,7 +3833,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 308,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3848,7 +3848,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 323,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3863,7 +3863,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 338,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3878,7 +3878,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 353,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3893,7 +3893,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 368,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3908,7 +3908,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 383,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3923,7 +3923,7 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 398,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												},
 												{
@@ -3938,21 +3938,21 @@
 													"font": "Arial;13;0",
 													"left": 709,
 													"top": 413,
-													"width": 110.29541015625,
+													"width": 131.26171875,
 													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 704,
 											"top": 303,
-											"width": 120.29541015625,
+											"width": 141.26171875,
 											"height": 128
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 704,
 									"top": 280,
-									"width": 120.29541015625,
+									"width": 141.26171875,
 									"height": 151,
 									"nameLabel": {
 										"$ref": "AAAAAAFmDQPuIdjSSZs="
@@ -4538,6 +4538,21 @@
 											"subViews": [
 												{
 													"_type": "ERDColumnView",
+													"_id": "AAAAAAFnOA3JbDRJ5YI=",
+													"_parent": {
+														"$ref": "AAAAAAFmJjfe70DnTZQ="
+													},
+													"model": {
+														"$ref": "AAAAAAFnOA3I3zRGj8A="
+													},
+													"font": "Arial;13;0",
+													"left": 597,
+													"top": 612,
+													"width": 110.29541015625,
+													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
 													"_id": "AAAAAAFmJjnf10D6f98=",
 													"_parent": {
 														"$ref": "AAAAAAFmJjfe70DnTZQ="
@@ -4547,7 +4562,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 612,
+													"top": 627,
 													"width": 110.29541015625,
 													"height": 13
 												},
@@ -4562,7 +4577,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 627,
+													"top": 642,
 													"width": 110.29541015625,
 													"height": 13
 												},
@@ -4577,7 +4592,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 642,
+													"top": 657,
 													"width": 110.29541015625,
 													"height": 13
 												},
@@ -4592,7 +4607,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 657,
+													"top": 672,
 													"width": 110.29541015625,
 													"height": 13
 												}
@@ -4601,14 +4616,14 @@
 											"left": 592,
 											"top": 607,
 											"width": 120.29541015625,
-											"height": 68
+											"height": 83
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 592,
 									"top": 584,
 									"width": 120.29541015625,
-									"height": 91,
+									"height": 106,
 									"nameLabel": {
 										"$ref": "AAAAAAFmJjfe7kDmdeA="
 									},
@@ -6589,7 +6604,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 1059,
+											"left": 1070,
 											"top": 355,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -6606,7 +6621,7 @@
 												"$ref": "AAAAAAFmWj4curhtqUA="
 											},
 											"font": "Arial;13;0",
-											"left": 848,
+											"left": 869,
 											"top": 355,
 											"height": 13,
 											"alpha": 0.5235987755982988,
@@ -6641,7 +6656,7 @@
 										"$ref": "AAAAAAFmDQPuIdjRDX8="
 									},
 									"lineStyle": 2,
-									"points": "823:376;1296:376",
+									"points": "844:376;1296:376",
 									"nameLabel": {
 										"$ref": "AAAAAAFmWj4curhu30w="
 									},
@@ -7144,7 +7159,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFmDQPuIdjPkIw="
 									},
-									"name": "Password",
+									"name": "PasswordHash",
 									"length": 0
 								},
 								{
@@ -7592,13 +7607,22 @@
 							"columns": [
 								{
 									"_type": "ERDColumn",
+									"_id": "AAAAAAFnOA3I3zRGj8A=",
+									"_parent": {
+										"$ref": "AAAAAAFmJjfe7UDjKL0="
+									},
+									"name": "ID",
+									"length": 0,
+									"primaryKey": true
+								},
+								{
+									"_type": "ERDColumn",
 									"_id": "AAAAAAFmJjnfjkD34I8=",
 									"_parent": {
 										"$ref": "AAAAAAFmJjfe7UDjKL0="
 									},
 									"name": "SessionID",
-									"length": 0,
-									"primaryKey": true
+									"length": 0
 								},
 								{
 									"_type": "ERDColumn",
