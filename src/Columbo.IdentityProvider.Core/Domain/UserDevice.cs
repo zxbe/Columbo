@@ -10,6 +10,8 @@ namespace Columbo.IdentityProvider.Core.Domain
         public int UserIdentityId { get; private set; }
         public int DeviceId { get; private set; }
         public bool IsCodeRequired { get; private set; }
+        public UserIdentity UserIdentity { get; private set; }
+        public Device Device { get; private set; }
 
         public UserDevice(int creatorId, int userIdentityId, int deviceId, bool isCodeRequired)
             : base(creatorId)

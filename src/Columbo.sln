@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Core", "Columbo.IdentityProvider.Core\Columbo.IdentityProvider.Core.csproj", "{E23ADDC3-2083-446B-A83F-6C6D6AD412B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.SharedKernel", "Columbo.SharedKernel\Columbo.SharedKernel.csproj", "{2FC3F7BE-6A0A-4B64-949A-DBD3AAEC6B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.SharedKernel", "Columbo.SharedKernel\Columbo.SharedKernel.csproj", "{2FC3F7BE-6A0A-4B64-949A-DBD3AAEC6B60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Infrastructure", "Columbo.IdentityProvider.Infrastructure\Columbo.IdentityProvider.Infrastructure.csproj", "{B9E2FF8E-D074-4A97-9C69-8A797C287560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.IdentityProvider.Service", "Columbo.IdentityProvider.Service\Columbo.IdentityProvider.Service.csproj", "{44CD3150-AECF-4EB6-8375-8F6F96E86486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Shared", "Columbo.Shared\Columbo.Shared.csproj", "{56F06A73-9E3A-4A80-A3D3-BC1F3E40B87A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{2FC3F7BE-6A0A-4B64-949A-DBD3AAEC6B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FC3F7BE-6A0A-4B64-949A-DBD3AAEC6B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC3F7BE-6A0A-4B64-949A-DBD3AAEC6B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E2FF8E-D074-4A97-9C69-8A797C287560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E2FF8E-D074-4A97-9C69-8A797C287560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E2FF8E-D074-4A97-9C69-8A797C287560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E2FF8E-D074-4A97-9C69-8A797C287560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44CD3150-AECF-4EB6-8375-8F6F96E86486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44CD3150-AECF-4EB6-8375-8F6F96E86486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44CD3150-AECF-4EB6-8375-8F6F96E86486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44CD3150-AECF-4EB6-8375-8F6F96E86486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F06A73-9E3A-4A80-A3D3-BC1F3E40B87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F06A73-9E3A-4A80-A3D3-BC1F3E40B87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F06A73-9E3A-4A80-A3D3-BC1F3E40B87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F06A73-9E3A-4A80-A3D3-BC1F3E40B87A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,8 @@ namespace Columbo.IdentityProvider.Core.Domain
     {
         public int UserIdentityId { get; private set; }
         public int RoleId { get; private set; }
+        public UserIdentity UserIdentity { get; private set; }
+        public Role Role { get; private set; }
 
         public UserRole(int creatorId, int userIdentityId, int roleId)
             : base(creatorId)
