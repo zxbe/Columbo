@@ -1,4 +1,4 @@
-﻿using Columbo.SharedKernel.Domain;
+﻿using Columbo.Shared.Kernel.Domain;
 using System;
 using System.Collections.Generic;
 using System.Net;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.SharedKernel.Domain
+namespace Columbo.Shared.Kernel.Domain
 {
     public abstract class AggregateRoot : ManagedBaseEntity
     {

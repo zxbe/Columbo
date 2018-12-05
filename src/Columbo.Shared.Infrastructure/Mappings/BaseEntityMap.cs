@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
-using Columbo.SharedKernel.Domain;
+using Columbo.Shared.Kernel.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Columbo.Shared.Infrastructure.Mappings
