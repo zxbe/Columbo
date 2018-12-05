@@ -18,6 +18,9 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.Property(x => x.UserIdentityId).HasColumnName("UserIdentityID");
             builder.Property(x => x.RoleId).HasColumnName("RoleID");
+
+            builder.HasOne(x => x.UserIdentity).WithMany(x => x.UserRoles);
+            builder.HasOne(x => x.Role).WithMany(x => x.UserRoles);
         }
     }
 }

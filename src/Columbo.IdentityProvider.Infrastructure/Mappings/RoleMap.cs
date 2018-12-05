@@ -19,6 +19,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.Property(x => x.Name).HasMaxLength(50);
             builder.Property(x => x.InstanceId).HasColumnName("InstanceID");
             builder.Property(x => x.RoleTypeId).HasColumnName("RoleTypeID");
+
+            builder.HasOne(x => x.RoleType).WithMany(x => x.Roles);
         }
     }
 }

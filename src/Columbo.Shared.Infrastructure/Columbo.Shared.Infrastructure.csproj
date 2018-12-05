@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

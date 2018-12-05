@@ -20,6 +20,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.Property(x => x.MacAddress.ToString()).HasColumnName("MacAddress");
             builder.Property(x => x.IsActive);
             builder.Property(x => x.DeviceTypeId);
+
+            builder.HasOne(x => x.DeviceType).WithMany(x => x.Devices);
         }
     }
 }

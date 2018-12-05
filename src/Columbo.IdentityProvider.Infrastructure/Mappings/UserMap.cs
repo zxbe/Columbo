@@ -20,6 +20,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.Property(x => x.Surname).HasMaxLength(50);
             builder.Property(x => x.EmailAddress).HasMaxLength(50);
             builder.Property(x => x.IsActive);
+
+            builder.HasOne(x => x.UserIdentity).WithOne(x => x.User);
         }
     }
 }
