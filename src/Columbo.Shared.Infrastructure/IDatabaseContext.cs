@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.IdentityProvider.Infrastructure
+namespace Columbo.Shared.Infrastructure
 {
-    interface IDatabaseContext
+    public interface IDatabaseContext
     {
         EntityEntry<TEntity> Attach<TEntity>(TEntity entity) where TEntity : class;
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
