@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="autofac" Version="4.8.1" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.0" />
     <PackageReference Include="microsoft.entityframeworkcore.relational" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />

@@ -8,6 +8,10 @@ namespace Columbo.Shared.Kernel.Domain
     {
         public int Version { get; private set; }
 
+        protected AggregateRoot()
+        {
+        }
+
         public AggregateRoot(int creatorId)
             : base(creatorId)
         {

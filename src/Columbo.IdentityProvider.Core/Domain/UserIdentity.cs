@@ -14,7 +14,11 @@ namespace Columbo.IdentityProvider.Core.Domain
         public User User { get; private set; }
         public ICollection<UserDevice> UserDevices { get; private set; }
         public ICollection<UserRole> UserRoles { get; private set; }
-        
+
+        protected UserIdentity()
+        {
+        }
+
         public UserIdentity(int creatorId, int userId, string login, string password)
             : base(creatorId)
         {
@@ -24,7 +28,7 @@ namespace Columbo.IdentityProvider.Core.Domain
             IsActive = true;
 
             UserDevices = new List<UserDevice>();
-            UserRoles = new List<UserDevice>();
+            UserRoles = new List<UserRole>();
         }
     }
 }

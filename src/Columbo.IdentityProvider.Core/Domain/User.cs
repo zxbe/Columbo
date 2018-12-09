@@ -13,6 +13,10 @@ namespace Columbo.IdentityProvider.Core.Domain
         public bool IsActive { get; private set; }
         public UserIdentity UserIdentity { get; private set; }
 
+        protected User()
+        {
+        }
+
         public User(int creatorId, string name, string surname, string emailAddress)
             : base(creatorId)
         {

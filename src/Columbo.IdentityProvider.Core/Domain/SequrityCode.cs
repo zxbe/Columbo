@@ -10,6 +10,10 @@ namespace Columbo.IdentityProvider.Core.Domain
         public Guid SessionId { get; private set; }
         public int Code { get; private set; }
 
+        protected SequrityCode()
+        {
+        }
+
         public SequrityCode(int creatorId, Guid sessionId, int code)
             : base(creatorId)
         {

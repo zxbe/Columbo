@@ -8,6 +8,10 @@ namespace Columbo.Shared.Kernel.Domain
     {
         public DateTime? UpdateDate { get; private set; }
 
+        protected ManagedBaseEntity()
+        {
+        }
+
         public ManagedBaseEntity(int creatorId)
             : base(creatorId)
         {

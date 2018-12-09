@@ -10,6 +10,10 @@ namespace Columbo.Shared.Kernel.Domain
         public int CreatorId { get; private set; }
         public DateTime CreateDate { get; private set; }
 
+        protected BaseEntity()
+        {
+        }
+
         public BaseEntity(int creatorId)
         {
             CreatorId = creatorId;

@@ -12,6 +12,10 @@ namespace Columbo.IdentityProvider.Core.Domain
         public UserIdentity UserIdentity { get; private set; }
         public Role Role { get; private set; }
 
+        protected UserRole()
+        {
+        }
+
         public UserRole(int creatorId, int userIdentityId, int roleId)
             : base(creatorId)
         {

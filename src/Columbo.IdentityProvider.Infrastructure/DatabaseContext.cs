@@ -19,7 +19,7 @@ namespace Columbo.IdentityProvider.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("connectionString"); //todo connectionstring
+            optionsBuilder.UseSqlServer("IdentityProviderDatabase");
         }
     }
 }

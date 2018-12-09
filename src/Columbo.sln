@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Infrastructure", "Columbo.IdentityProvider.Infrastructure\Columbo.IdentityProvider.Infrastructure.csproj", "{B9E2FF8E-D074-4A97-9C69-8A797C287560}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Shared.Infrastructure", "Columbo.Shared.Infrastructure\Columbo.Shared.Infrastructure.csproj", "{09DBAC02-77E8-46FB-BCD6-050BC6A9EF28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Infrastructure", "Columbo.Shared.Infrastructure\Columbo.Shared.Infrastructure.csproj", "{09DBAC02-77E8-46FB-BCD6-050BC6A9EF28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.Shared.Kernel", "Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj", "{2383BE3C-02FB-4F92-9BEF-B41431E538DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Kernel", "Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj", "{2383BE3C-02FB-4F92-9BEF-B41431E538DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.IdentityProvider.Service", "Columbo.IdentityProvider.Service\Columbo.IdentityProvider.Service.csproj", "{8EAC6F69-B605-4F01-8F42-678A61A84A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{2383BE3C-02FB-4F92-9BEF-B41431E538DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2383BE3C-02FB-4F92-9BEF-B41431E538DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2383BE3C-02FB-4F92-9BEF-B41431E538DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

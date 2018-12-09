@@ -9,6 +9,10 @@ namespace Columbo.IdentityProvider.Core.Domain
     {
         public ICollection<Device> Devices { get; private set; }
 
+        protected DeviceType()
+        {
+        }
+
         public DeviceType(int creatorId, string name)
             : base(creatorId, name)
         {
