@@ -7,11 +7,19 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Configuration;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
     public class DatabaseContext : DbContext, IDatabaseContext
     {
+        private readonly IDatabaseInitializer _initializer;
+
+        public DatabaseContext(IDatabaseInitializer initializer)
+        {
+            _initializer = initializer;
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -19,7 +27,14 @@ namespace Columbo.IdentityProvider.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("IdentityProviderDatabase");
+            var connectionString = ConfigurationManager.ConnectionStrings["IdentityProviderDatabase"].ConnectionString;
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        public void InitializeDatabase()
+        {
+            _initializer.Initialize(this);
+            _initializer.Seed(this);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Columbo.IdentityProvider.Service.Container
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<IdentityProviderService>().As<IIdentityProviderService>();
+            builder.RegisterType<IdentityProviderService>().As<IIdentityProviderService>().InstancePerLifetimeScope();
         }
     }
 }

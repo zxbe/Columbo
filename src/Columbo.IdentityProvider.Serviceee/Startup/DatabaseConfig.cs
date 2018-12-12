@@ -9,9 +9,9 @@ namespace Columbo.IdentityProvider.Service.Startup
 {
     public static class DatabaseConfig
     {
-        public static void Initialize(IDatabaseContext context)
+        public static void Initialing(IDatabaseContext context)
         {
-            context.InitializeDatabase();
+            context.Database.EnsureCreated(); // Migrate() to use migration
         }
     }
 }

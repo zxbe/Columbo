@@ -1,7 +1,6 @@
 ﻿<%@ ServiceHost 
     Language="C#" 
     Debug="true" 
-    Factory="Columbo.IdentityProvider.Service.IdentityProviderServiceHostFactory" 
-    Service="Columbo.IdentityProvider.Service.IdentityProviderService" 
-    CodeBehind="IdentityProviderService.svc.cs" 
-%>
+    Service="Columbo.IdentityProvider.Service.ServiceContracts.IIdentityProviderService, Columbo.IdentityProvider.Service" 
+    Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf"
+    CodeBehind="IdentityProviderService.svc.cs" %>

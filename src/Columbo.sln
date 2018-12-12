@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Kernel", "Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.IdentityProvider.Service", "Columbo.IdentityProvider.Service\Columbo.IdentityProvider.Service.csproj", "{8EAC6F69-B605-4F01-8F42-678A61A84A52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.IdentityProvider.Serviceee", "Columbo.IdentityProvider.Serviceee\Columbo.IdentityProvider.Serviceee.csproj", "{8EAC6F69-B605-4F01-8F42-678A61A84A52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Columbo.IdentityProvider.Service", "Columbo.IdentityProvider.Service\Columbo.IdentityProvider.Service.csproj", "{E080A7AB-FF0B-483B-A689-D2F7A3C82D99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EAC6F69-B605-4F01-8F42-678A61A84A52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E080A7AB-FF0B-483B-A689-D2F7A3C82D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E080A7AB-FF0B-483B-A689-D2F7A3C82D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E080A7AB-FF0B-483B-A689-D2F7A3C82D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E080A7AB-FF0B-483B-A689-D2F7A3C82D99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
