@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Query\" />
+  </ItemGroup>
+
+</Project>
