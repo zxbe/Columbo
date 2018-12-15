@@ -16,15 +16,14 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("Device");
 
-            builder.Property(x => x.IpAddress).HasColumnName("IpAddress");
-            builder.Property(x => x.MacAddress).HasColumnName("MacAddress");
+            builder.OwnsOne(x => x.IpAddress, y => y.Property(z => z.Address).HasColumnName("IpAddress").HasMaxLength(15));
+            builder.OwnsOne(x => x.IpAddress, y => y.Ignore(z => z.ScopeId));
+            builder.OwnsOne(x => x.MacAddress, y => y.Property(z => z.Address).HasColumnName("MacAddress").HasMaxLength(17));
             builder.Property(x => x.IsActive);
             builder.Property(x => x.DeviceTypeId);
 
             builder.HasOne(x => x.DeviceType).WithMany(x => x.Devices);
-
-            builder.Ignore(x => x.IpAddressObject);
-            builder.Ignore(x => x.MacAddressObject);
+            
         }
     }
 }

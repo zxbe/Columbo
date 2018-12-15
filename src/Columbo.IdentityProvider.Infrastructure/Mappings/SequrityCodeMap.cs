@@ -16,7 +16,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("SequrityCode");
 
-            builder.Property(x => x.SessionId).HasColumnName("SessionID");
+            builder.Property(x => x.SessionId);
             builder.Property(x => x.Code);
         }
     }

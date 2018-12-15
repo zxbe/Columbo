@@ -7,9 +7,29 @@ namespace Columbo.IdentityProvider.Core.ValueObjects
 {
     public class MacAddress
     {
-        public string Address { get; private set; }
+        private string _address;
+
+        public string Address
+        {
+            get
+            {
+                return _address;
+            }
+            set
+            {
+                if (Valid(value))
+                    _address = value;
+                else
+                    throw new ArgumentException("Mac address is now valid");
+            }
+        }
         public string[] AddressParts => Address.Split(':');
         
+        public MacAddress()
+        {
+            Address = string.Empty;
+        }
+
         public MacAddress(string macAddress)
         {
             if (!Valid(macAddress))

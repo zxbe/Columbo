@@ -16,8 +16,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("RolePermission");
 
-            builder.Property(x => x.RoleId).HasColumnName("RoleID");
-            builder.Property(x => x.PermissionId).HasColumnName("PermissionID");
+            builder.Property(x => x.RoleId);
+            builder.Property(x => x.PermissionId);
         }
     }
 }

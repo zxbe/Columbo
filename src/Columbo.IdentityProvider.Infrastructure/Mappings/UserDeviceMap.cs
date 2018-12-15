@@ -15,8 +15,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             base.Configure(builder);
 
             builder.ToTable("UserDevice");
-            builder.Property(x => x.UserIdentityId).HasColumnName("UserIdentityID");
-            builder.Property(x => x.DeviceId).HasColumnName("DeviceID");
+            builder.Property(x => x.UserIdentityId);
+            builder.Property(x => x.DeviceId);
             builder.Property(x => x.IsCodeRequired);
 
             builder.HasOne(x => x.Device).WithMany(x => x.UserDevices);

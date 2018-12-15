@@ -9,20 +9,8 @@ namespace Columbo.IdentityProvider.Core.Domain
 {
     public class Device : ManagedBaseEntity
     {
-        public long IpAddress
-        {
-            get { return IpAddressObject.Address; }
-            set { IpAddressObject = new IPAddress(value); }
-        }
-
-        public string MacAddress
-        {
-            get { return MacAddressObject.ToString(); }
-            set { MacAddressObject = new MacAddress(value); }
-        }
-
-        public IPAddress IpAddressObject { get; private set; }
-        public MacAddress MacAddressObject { get; private set; }
+        public IpAddress IpAddress { get; private set; }
+        public MacAddress MacAddress { get; private set; }
         public bool IsActive { get; private set; }
         public int DeviceTypeId { get; private set; }
         public DeviceType DeviceType { get; private set; }
@@ -32,12 +20,12 @@ namespace Columbo.IdentityProvider.Core.Domain
         {
         }
 
-        public Device(int creatorId, int deviceTypeId, IPAddress ipAddress, MacAddress macAddress)
+        public Device(int creatorId, int deviceTypeId, IpAddress ipAddress, MacAddress macAddress)
             : base(creatorId)
         {
             DeviceTypeId = deviceTypeId;
-            IpAddressObject = ipAddress;
-            MacAddressObject = macAddress;
+            IpAddress = ipAddress;
+            MacAddress = macAddress;
             IsActive = true;
 
             UserDevices = new List<UserDevice>();

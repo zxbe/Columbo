@@ -13,7 +13,7 @@ namespace Columbo.Shared.Infrastructure.Mappings
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.CreatorId).HasColumnName("CreatorID");
+            builder.Property(x => x.CreatorId);
             builder.Property(x => x.CreateDate).HasColumnType("datetime2");
         }
     }
