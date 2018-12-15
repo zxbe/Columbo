@@ -9,10 +9,10 @@ namespace Columbo.Shared.Api.Dtos
     public class Error
     {
         [DataMember]
-        public string ExceptionName { get; private set; }
+        public string ExceptionName { get; set; }
 
         [DataMember]
-        public string Message { get; private set; }
+        public string Message { get; set; }
 
         public Error(string exceptionName, string message)
         {

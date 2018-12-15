@@ -1,6 +1,7 @@
 ﻿using Columbo.Shared.Kernel.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Columbo.IdentityProvider.Core.Domain
@@ -18,17 +19,27 @@ namespace Columbo.IdentityProvider.Core.Domain
         protected UserIdentity()
         {
         }
-
-        public UserIdentity(int creatorId, int userId, string login, string password)
+        
+        public UserIdentity(int creatorId, User user, string login, int passwordHash)
             : base(creatorId)
         {
-            UserId = userId;
+            User = user;
             Login = login;
-            PasswordHash = password.GetHashCode();
+            PasswordHash = passwordHash;
             IsActive = true;
 
             UserDevices = new List<UserDevice>();
             UserRoles = new List<UserRole>();
+        }
+
+        public void AddRoles(List<int> rolesId, int creatorId)
+        {
+            rolesId.ForEach(x => UserRoles.Add(new UserRole(creatorId, this.Id, x)));
+        }
+
+        public void Archive()
+        {
+            IsActive = false;
         }
     }
 }

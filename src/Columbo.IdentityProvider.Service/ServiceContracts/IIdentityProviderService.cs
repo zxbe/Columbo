@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Columbo.IdentityProvider.Service.ServiceContracts
 {
     [ServiceContract]
-    public interface IIdentityProviderService : ISecurityTokenService, IUserManagementService
+    public interface IIdentityProviderService : ISecurityToken, IUserManagement
     {
     }
 }

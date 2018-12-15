@@ -8,8 +8,10 @@ namespace Columbo.Shared.Api.Dtos
     [DataContract]
     public class ServiceResult
     {
-        public bool IsSuccess { get; private set; }
-        public Error Error { get; private set; }
+        [DataMember]
+        public bool IsSuccess { get; set; }
+        [DataMember]
+        public Error Error { get; set; }
 
         protected ServiceResult(bool isSuccess, Error error = null)
         {

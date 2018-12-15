@@ -10,7 +10,6 @@ namespace Columbo.IdentityProvider.Core.Domain
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public string EmailAddress { get; private set; }
-        public bool IsActive { get; private set; }
         public UserIdentity UserIdentity { get; private set; }
 
         protected User()
@@ -23,7 +22,6 @@ namespace Columbo.IdentityProvider.Core.Domain
             Name = name;
             Surname = surname;
             EmailAddress = emailAddress;
-            IsActive = true;
         }
     }
 }

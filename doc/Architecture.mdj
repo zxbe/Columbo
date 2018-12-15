@@ -3710,21 +3710,6 @@
 												},
 												{
 													"_type": "ERDColumnView",
-													"_id": "AAAAAAFmDQxhBNk2V18=",
-													"_parent": {
-														"$ref": "AAAAAAFmDPznZtimJ+c="
-													},
-													"model": {
-														"$ref": "AAAAAAFmDQxgvNkz89k="
-													},
-													"font": "Arial;13;0",
-													"left": 1013,
-													"top": 248,
-													"width": 124.76171875,
-													"height": 13
-												},
-												{
-													"_type": "ERDColumnView",
 													"_id": "AAAAAAFmJrk1U3w+BmE=",
 													"_parent": {
 														"$ref": "AAAAAAFmDPznZtimJ+c="
@@ -3734,7 +3719,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 1013,
-													"top": 263,
+													"top": 248,
 													"width": 124.76171875,
 													"height": 13
 												},
@@ -3749,7 +3734,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 1013,
-													"top": 278,
+													"top": 263,
 													"width": 124.76171875,
 													"height": 13
 												},
@@ -3764,7 +3749,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 1013,
-													"top": 293,
+													"top": 278,
 													"width": 124.76171875,
 													"height": 13
 												}
@@ -3773,14 +3758,14 @@
 											"left": 1008,
 											"top": 183,
 											"width": 134.76171875,
-											"height": 128
+											"height": 113
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1008,
 									"top": 160,
 									"width": 134.76171875,
-									"height": 151,
+									"height": 136,
 									"nameLabel": {
 										"$ref": "AAAAAAFmDPznZtilIJA="
 									},
@@ -6742,15 +6727,6 @@
 										"$ref": "AAAAAAFmDPznZdiiCEo="
 									},
 									"name": "EmailAddress",
-									"length": 0
-								},
-								{
-									"_type": "ERDColumn",
-									"_id": "AAAAAAFmDQxgvNkz89k=",
-									"_parent": {
-										"$ref": "AAAAAAFmDPznZdiiCEo="
-									},
-									"name": "IsActive",
 									"length": 0
 								},
 								{

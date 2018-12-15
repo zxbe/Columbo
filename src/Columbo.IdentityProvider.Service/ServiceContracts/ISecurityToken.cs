@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Columbo.IdentityProvider.Service.ServiceContracts
 {
     [ServiceContract]
-    public interface ISecurityTokenService
+    public interface ISecurityToken
     {
         [OperationContract]
         void TokenTest();

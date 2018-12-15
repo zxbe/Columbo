@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using Autofac;
 using Columbo.IdentityProvider.Service.ServiceContracts;
+using Columbo.Shared.Kernel.Command;
+using Module = Autofac.Module;
 
 namespace Columbo.IdentityProvider.Service.Container
 {
@@ -11,6 +14,24 @@ namespace Columbo.IdentityProvider.Service.Container
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(x => x.IsClass && x.Name.EndsWith("CommandHandler"))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
+
+            builder.Register<Func<Type, ICommandHandler>>(c =>
+            {
+                var ctx = c.Resolve<IComponentContext>();
+
+                return t =>
+                {
+                    var handlerType = typeof(ICommandHandler<>).MakeGenericType(t);
+                    var handler = (ICommandHandler) ctx.Resolve(handlerType);
+
+                    return handler;
+                };
+            });
+
             builder.RegisterType<IdentityProviderService>().As<IIdentityProviderService>();
         }
     }

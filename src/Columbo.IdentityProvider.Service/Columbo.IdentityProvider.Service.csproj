@@ -160,7 +160,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandsBus.cs" />
+    <Compile Include="CommandHandlers\AddUserIdentityCommandHandler.cs" />
     <Compile Include="Container\ContainerModule.cs" />
+    <Compile Include="Dtos\DeviceDto.cs" />
+    <Compile Include="Dtos\RoleDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
+    <Compile Include="Dtos\UserIdentityDto.cs" />
+    <Compile Include="Enums\DeviceTypeEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,8 +176,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContracts\IIdentityProviderService.cs" />
-    <Compile Include="ServiceContracts\ISecurityTokenService.cs" />
-    <Compile Include="ServiceContracts\IUserManagementService.cs" />
+    <Compile Include="ServiceContracts\ISecurityToken.cs" />
+    <Compile Include="ServiceContracts\IUserManagement.cs" />
     <Compile Include="Startup\ContainerConfig.cs" />
     <Compile Include="Startup\DatabaseConfig.cs" />
   </ItemGroup>
@@ -184,18 +191,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Columbo.IdentityProvider.Core\Columbo.IdentityProvider.Core.csproj">
+      <Project>{e23addc3-2083-446b-a83f-6c6d6ad412b7}</Project>
+      <Name>Columbo.IdentityProvider.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Columbo.IdentityProvider.Infrastructure\Columbo.IdentityProvider.Infrastructure.csproj">
       <Project>{b9e2ff8e-d074-4a97-9c69-8a797c287560}</Project>
       <Name>Columbo.IdentityProvider.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Columbo.Shared.Api\Columbo.Shared.Api.csproj">
+      <Project>{a0743fcf-e176-4597-a5ec-f6a361bf2f37}</Project>
+      <Name>Columbo.Shared.Api</Name>
     </ProjectReference>
     <ProjectReference Include="..\Columbo.Shared.Infrastructure\Columbo.Shared.Infrastructure.csproj">
       <Project>{09dbac02-77e8-46fb-bcd6-050bc6a9ef28}</Project>
       <Name>Columbo.Shared.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj">
+      <Project>{2383be3c-02fb-4f92-9bef-b41431e538db}</Project>
+      <Name>Columbo.Shared.Kernel</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
