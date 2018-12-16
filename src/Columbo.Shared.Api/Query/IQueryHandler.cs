@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Columbo.Shared.Api.Query
 {
-    public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
+    public interface IQueryHanfler
+    {
+    }
+
+    public interface IQueryHandler<TQuery, TResult> : IQueryHanfler where TQuery : IQuery<TResult>
     {
         TResult Handle(TQuery query);
     }

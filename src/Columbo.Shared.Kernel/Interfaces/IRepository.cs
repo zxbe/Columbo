@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.Shared.Kernel
+namespace Columbo.Shared.Kernel.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : ManagedBaseEntity
     {

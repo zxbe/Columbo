@@ -1,7 +1,7 @@
 ﻿using Columbo.IdentityProvider.Core.Commands;
 using Columbo.IdentityProvider.Core.Domain;
 using Columbo.IdentityProvider.Core.Repositories;
-using Columbo.Shared.Kernel.Command;
+using Columbo.Shared.Api.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,6 @@ namespace Columbo.IdentityProvider.Service.CommandHandlers
         {
             var user = new User(command.CreatorId, command.Name, command.Surname, command.EmailAddress);
             var userIdentity = new UserIdentity(command.CreatorId, user, command.Login, command.PasswordHash);
-
             userIdentity.AddRoles(command.RolesId, command.CreatorId);
 
             _userIdentityRepository.Add(userIdentity);

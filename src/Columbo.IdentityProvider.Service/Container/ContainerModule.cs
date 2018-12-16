@@ -4,8 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using Autofac;
+using Columbo.IdentityProvider.Service.Buses;
 using Columbo.IdentityProvider.Service.ServiceContracts;
-using Columbo.Shared.Kernel.Command;
+using Columbo.Shared.Api.Command;
 using Module = Autofac.Module;
 
 namespace Columbo.IdentityProvider.Service.Container
@@ -32,6 +33,7 @@ namespace Columbo.IdentityProvider.Service.Container
                 };
             });
 
+            builder.RegisterType<CommandBus>().As<ICommandBus>().InstancePerLifetimeScope();
             builder.RegisterType<IdentityProviderService>().As<IIdentityProviderService>();
         }
     }

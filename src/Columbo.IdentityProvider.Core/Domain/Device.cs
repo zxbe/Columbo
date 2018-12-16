@@ -1,4 +1,4 @@
-﻿using Columbo.IdentityProvider.Core.ValueObjects;
+﻿using Columbo.Shared.Kernel.ValueObjects;
 using Columbo.Shared.Kernel.Domain;
 using System;
 using System.Collections.Generic;

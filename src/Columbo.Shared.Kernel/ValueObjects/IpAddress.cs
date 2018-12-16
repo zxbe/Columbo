@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace Columbo.IdentityProvider.Core.ValueObjects
+namespace Columbo.Shared.Kernel.ValueObjects
 {
     public class IpAddress : IPAddress
     {

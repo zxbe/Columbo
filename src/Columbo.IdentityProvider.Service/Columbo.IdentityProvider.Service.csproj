@@ -160,7 +160,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandsBus.cs" />
+    <Compile Include="Buses\CommandBus.cs" />
+    <Compile Include="CommandHandlers\AddRoleCommandHandler.cs" />
     <Compile Include="CommandHandlers\AddUserIdentityCommandHandler.cs" />
     <Compile Include="Container\ContainerModule.cs" />
     <Compile Include="Dtos\DeviceDto.cs" />

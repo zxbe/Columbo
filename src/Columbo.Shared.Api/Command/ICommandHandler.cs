@@ -1,9 +1,6 @@
-﻿using Columbo.Shared.Kernel.Command;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Columbo.Shared.Kernel.Interfaces;
 
-namespace Columbo.Shared.Kernel.Command
+namespace Columbo.Shared.Api.Command
 {
     public interface ICommandHandler
     {

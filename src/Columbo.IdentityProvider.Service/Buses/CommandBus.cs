@@ -1,16 +1,17 @@
-﻿using Columbo.Shared.Kernel.Command;
+﻿using Columbo.Shared.Api.Command;
+using Columbo.Shared.Kernel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Columbo.IdentityProvider.Service
+namespace Columbo.IdentityProvider.Service.Buses
 {
-    public class CommandsBus : ICommandsBus
+    public class CommandBus : ICommandBus
     {
         private readonly Func<Type, ICommandHandler> _handlersFactory;
         
-        public CommandsBus(Func<Type, ICommandHandler> handlersFactory)
+        public CommandBus(Func<Type, ICommandHandler> handlersFactory)
         {
             _handlersFactory = handlersFactory;
         }

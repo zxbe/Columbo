@@ -1,4 +1,4 @@
-﻿using Columbo.Shared.Kernel.Command;
+﻿using Columbo.Shared.Kernel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

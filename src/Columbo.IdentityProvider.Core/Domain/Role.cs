@@ -29,5 +29,10 @@ namespace Columbo.IdentityProvider.Core.Domain
             RolePermissions = new List<RolePermission>();
             UserRoles = new List<UserRole>();
         }
+
+        public void AddPermissions(List<int> permissionsId, int creatorId)
+        {
+            permissionsId.ForEach(x => RolePermissions.Add(new RolePermission(creatorId, this.Id, x)));
+        }
     }
 }
