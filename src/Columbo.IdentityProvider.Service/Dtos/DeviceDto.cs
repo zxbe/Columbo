@@ -11,6 +11,8 @@ namespace Columbo.IdentityProvider.Service.Dtos
     public class DeviceDto
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public string IpAddress { get; set; }
         [DataMember]
         public string MacAddress { get; set; }
@@ -18,5 +20,7 @@ namespace Columbo.IdentityProvider.Service.Dtos
         public bool IsActive { get; set; }
         [DataMember]
         public DeviceTypeEnum DeviceType { get; set; }
+        [DataMember]
+        public int CreatorId { get; set; }
     }
 }

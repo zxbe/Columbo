@@ -10,6 +10,8 @@ namespace Columbo.IdentityProvider.Service.Dtos
     public class UserIdentityDto
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public string Login { get; set; }
         [DataMember]
         public int? PasswordHash { get; set; }
@@ -17,6 +19,8 @@ namespace Columbo.IdentityProvider.Service.Dtos
         public bool IsActive { get; set; }
         [DataMember]
         public UserDto User { get; set; }
+        [DataMember]
+        public int CreatorId { get; set; }
         [DataMember]
         public ICollection<RoleDto> Roles { get; set; }
         [DataMember]

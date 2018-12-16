@@ -11,11 +11,15 @@ namespace Columbo.IdentityProvider.Service.Dtos
     public class RoleDto
     {
         [DataMember]
+        public int Id { get; set; }
+        [DataMember]
         public string Name { get; set; }
         [DataMember]
         public int InstanceId { get; set; }
         [DataMember]
         public RoleTypeEnum RoleType { get; set; }
+        [DataMember]
+        public int CreatorId { get; set; }
         [DataMember]
         public ICollection<PermissionEnum> Permissions { get; set; }
 
