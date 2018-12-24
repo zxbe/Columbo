@@ -2,25 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+using System.Threading.Tasks;
 
-namespace Columbo.IdentityProvider.Service.Dtos
+namespace Columbo.IdentityProvider.Api.Dtos
 {
-    [DataContract]
     public class RoleDto
     {
-        [DataMember]
         public int Id { get; set; }
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public int InstanceId { get; set; }
-        [DataMember]
         public RoleTypeEnum RoleType { get; set; }
-        [DataMember]
         public int CreatorId { get; set; }
-        [DataMember]
         public ICollection<PermissionEnum> Permissions { get; set; }
 
         public RoleDto()

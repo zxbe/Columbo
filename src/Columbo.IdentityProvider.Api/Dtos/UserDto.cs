@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+using System.Threading.Tasks;
 
-namespace Columbo.IdentityProvider.Service.Dtos
+namespace Columbo.IdentityProvider.Api.Dtos
 {
-    [DataContract]
     public class UserDto
     {
-        [DataMember]
         public string Name { get; set; }
-        [DataMember]
         public string Surname { get; set; }
-        [DataMember]
         public string EmailAddress { get; set; }
     }
 }

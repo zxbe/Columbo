@@ -3,14 +3,14 @@ using Columbo.Shared.Kernel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 
-namespace Columbo.IdentityProvider.Service.Buses
+namespace Columbo.IdentityProvider.Api.Buses
 {
     public class CommandBus : ICommandBus
     {
         private readonly Func<Type, ICommandHandler> _handlersFactory;
-        
+
         public CommandBus(Func<Type, ICommandHandler> handlersFactory)
         {
             _handlersFactory = handlersFactory;
