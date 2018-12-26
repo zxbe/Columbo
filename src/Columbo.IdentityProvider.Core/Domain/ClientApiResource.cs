@@ -5,23 +5,22 @@ using System.Text;
 
 namespace Columbo.IdentityProvider.Core.Domain
 {
-    public class SequrityCode : BaseEntity
+    public class ClientApiResource : BaseEntity
     {
-        public Guid SessionId { get; private set; }
         public int ClientId { get; private set; }
-        public int Code { get; private set; }
+        public int ApiResourceId { get; private set; }
         public Client Client { get; private set; }
+        public ApiResource ApiResource { get; private set; }
 
-        protected SequrityCode()
+        protected ClientApiResource()
         {
         }
 
-        public SequrityCode(int creatorId, Guid sessionId, int clientId, int code)
+        public ClientApiResource(int creatorId, int clientId, int apiResourceId)
             : base(creatorId)
         {
-            SessionId = sessionId;
             ClientId = clientId;
-            Code = code;
+            ApiResourceId = apiResourceId;
         }
     }
 }

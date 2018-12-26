@@ -8,18 +8,13 @@ using System.Text;
 
 namespace Columbo.IdentityProvider.Infrastructure.Mappings
 {
-    public sealed class SequrityCodeMap : BaseEntityMap<SequrityCode>
+    public sealed class ClaimTypeMap : DictionaryBaseEntityMap<ClaimType>
     {
-        public override void Configure(EntityTypeBuilder<SequrityCode> builder)
+        public override void Configure(EntityTypeBuilder<ClaimType> builder)
         {
             base.Configure(builder);
 
-            builder.ToTable("SequrityCode");
-
-            builder.Property(x => x.SessionId);
-            builder.Property(x => x.Code);
-
-            builder.HasOne(x => x.Client).WithMany(x => x.SequrityCodes);
+            builder.ToTable("ClaimType");
         }
     }
 }

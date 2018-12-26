@@ -2,14 +2,14 @@
 using Columbo.Shared.Kernel.Domain;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text;
+using System.Net;
 
 namespace Columbo.IdentityProvider.Core.Domain
 {
     public class Device : ManagedBaseEntity
     {
-        public IpAddress IpAddress { get; private set; }
+        public IPAddress IpAddress { get; private set; }
         public MacAddress MacAddress { get; private set; }
         public bool IsActive { get; private set; }
         public int DeviceTypeId { get; private set; }
@@ -18,9 +18,10 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected Device()
         {
+            UserDevices = new List<UserDevice>();
         }
 
-        public Device(int creatorId, int deviceTypeId, IpAddress ipAddress, MacAddress macAddress)
+        public Device(int creatorId, int deviceTypeId, IPAddress ipAddress, MacAddress macAddress)
             : base(creatorId)
         {
             DeviceTypeId = deviceTypeId;

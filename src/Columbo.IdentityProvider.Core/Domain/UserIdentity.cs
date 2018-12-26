@@ -10,7 +10,7 @@ namespace Columbo.IdentityProvider.Core.Domain
     {
         public int UserId { get; private set; }
         public string Login { get; private set; }
-        public int PasswordHash { get; private set; }
+        public string PasswordHash { get; private set; }
         public bool IsActive { get; private set; }
         public User User { get; private set; }
         public ICollection<UserDevice> UserDevices { get; private set; }
@@ -18,9 +18,11 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected UserIdentity()
         {
+            UserDevices = new List<UserDevice>();
+            UserRoles = new List<UserRole>();
         }
         
-        public UserIdentity(int creatorId, User user, string login, int passwordHash)
+        public UserIdentity(int creatorId, User user, string login, string passwordHash)
             : base(creatorId)
         {
             User = user;

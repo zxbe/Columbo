@@ -8,18 +8,16 @@ using System.Text;
 
 namespace Columbo.IdentityProvider.Infrastructure.Mappings
 {
-    public sealed class SequrityCodeMap : BaseEntityMap<SequrityCode>
+    public sealed class ApiResourceMap : ManagedBaseEntityMap<ApiResource>
     {
-        public override void Configure(EntityTypeBuilder<SequrityCode> builder)
+        public override void Configure(EntityTypeBuilder<ApiResource> builder)
         {
             base.Configure(builder);
 
-            builder.ToTable("SequrityCode");
+            builder.ToTable("ApiResource");
 
-            builder.Property(x => x.SessionId);
-            builder.Property(x => x.Code);
-
-            builder.HasOne(x => x.Client).WithMany(x => x.SequrityCodes);
+            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Description).HasMaxLength(500);
         }
     }
 }

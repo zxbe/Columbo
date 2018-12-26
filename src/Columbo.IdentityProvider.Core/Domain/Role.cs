@@ -17,6 +17,8 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected Role()
         {
+            RolePermissions = new List<RolePermission>();
+            UserRoles = new List<UserRole>();
         }
 
         public Role(int creatorId, string name, int instanceId, int roleTypeId)

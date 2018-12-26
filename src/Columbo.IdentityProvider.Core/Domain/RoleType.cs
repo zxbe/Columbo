@@ -11,6 +11,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected RoleType()
         {
+            Roles = new List<Role>();
         }
 
         public RoleType(int creatorId, string name)

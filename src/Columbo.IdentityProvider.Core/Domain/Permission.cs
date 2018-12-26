@@ -11,6 +11,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected Permission()
         {
+            RolePermissions = new List<RolePermission>();
         }
 
         public Permission(int creatorId, string name)

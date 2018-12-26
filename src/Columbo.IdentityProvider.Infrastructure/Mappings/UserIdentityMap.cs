@@ -18,7 +18,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.Property(x => x.UserId);
             builder.Property(x => x.Login).HasMaxLength(50);
-            builder.Property(x => x.PasswordHash);
+            builder.Property(x => x.PasswordHash).HasMaxLength(64);
             builder.Property(x => x.IsActive);
         }
     }

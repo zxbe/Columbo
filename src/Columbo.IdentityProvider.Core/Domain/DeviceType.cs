@@ -11,6 +11,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         protected DeviceType()
         {
+            Devices = new List<Device>();
         }
 
         public DeviceType(int creatorId, string name)
