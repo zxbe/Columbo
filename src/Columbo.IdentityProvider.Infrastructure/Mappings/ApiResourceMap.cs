@@ -19,6 +19,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.Property(x => x.ApiGuid);
             builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
             builder.Property(x => x.Description).HasMaxLength(500);
+
+            builder.HasOne(x => x.Instance).WithMany(x => x.ApiResources);
         }
     }
 }

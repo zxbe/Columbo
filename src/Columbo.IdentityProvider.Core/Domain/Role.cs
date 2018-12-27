@@ -10,7 +10,7 @@ namespace Columbo.IdentityProvider.Core.Domain
         public string Name { get; private set; }
         public int InstanceId { get; private set; }
         public int RoleTypeId { get; private set; }
-        //todo instance
+        public Instance Instance { get; private set; }
         public RoleType RoleType { get; private set; }
         public ICollection<RolePermission> RolePermissions { get; private set; }
         public ICollection<UserRole> UserRoles { get; private set; }

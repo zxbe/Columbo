@@ -21,6 +21,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.Property(x => x.RoleTypeId);
 
             builder.HasOne(x => x.RoleType).WithMany(x => x.Roles);
+            builder.HasOne(x => x.Instance).WithMany(x => x.Roles);
         }
     }
 }
