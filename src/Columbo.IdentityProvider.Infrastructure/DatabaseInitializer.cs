@@ -7,7 +7,7 @@ namespace Columbo.IdentityProvider.Infrastructure
 {
     public class DatabaseInitializer : IDatabaseInitializer
     {
-        public void Initialize(IDatabaseContext context)
+        public void InitializeDatabase(IDatabaseContext context)
         {
             context.Database.EnsureCreated(); // Migrate() to use migration
         }

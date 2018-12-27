@@ -13,7 +13,7 @@ namespace Columbo.Shared.Infrastructure.Mappings
             base.Configure(builder);
 
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
+using Columbo.Shared.Kernel.ValueObjects;
 
 namespace Columbo.IdentityProvider.Infrastructure.Mappings
 {
@@ -17,8 +18,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("Device");
             
-            builder.Property(x => x.IpAddress).HasConversion<long>(x => x.Address, y => new IPAddress(y));
-            builder.OwnsOne(x => x.MacAddress, y => y.Property(z => z.Address).HasColumnName("MacAddress").HasMaxLength(17));
+            builder.Property(x => x.IpAddress).HasConversion<string>(x => x.ToString(), y => IPAddress.Parse(y)).HasMaxLength(15).IsRequired();
+            builder.Property(x => x.MacAddress).HasConversion<string>(x => x.ToString(), y => new MacAddress(y)).HasMaxLength(17).IsRequired();
             builder.Property(x => x.IsActive);
             builder.Property(x => x.DeviceTypeId);
 

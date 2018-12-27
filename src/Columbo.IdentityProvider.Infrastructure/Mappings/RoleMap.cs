@@ -16,7 +16,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("Role");
 
-            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
             builder.Property(x => x.InstanceId);
             builder.Property(x => x.RoleTypeId);
 

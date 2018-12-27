@@ -16,9 +16,9 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("User");
 
-            builder.Property(x => x.Name).HasMaxLength(50);
-            builder.Property(x => x.Surname).HasMaxLength(50);
-            builder.Property(x => x.EmailAddress).HasMaxLength(50);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Surname).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.EmailAddress).HasMaxLength(50).IsRequired();
 
             builder.HasOne(x => x.UserIdentity).WithOne(x => x.User);
         }

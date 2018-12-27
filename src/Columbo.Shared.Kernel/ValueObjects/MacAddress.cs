@@ -24,11 +24,6 @@ namespace Columbo.Shared.Kernel.ValueObjects
             }
         }
         public string[] AddressParts => Address.Split(':');
-        
-        public MacAddress()
-        {
-            Address = string.Empty;
-        }
 
         public MacAddress(string macAddress)
         {

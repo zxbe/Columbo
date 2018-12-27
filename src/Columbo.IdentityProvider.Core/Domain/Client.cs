@@ -7,6 +7,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 {
     public class Client : AggregateRoot
     {
+        public Guid ClientGuid { get; private set; }
         public string SecretHash { get; private set; }
         public Uri RedirectUri { get; private set; }
         public Uri PostLogoutRedirectUri { get; private set; }
@@ -35,6 +36,7 @@ namespace Columbo.IdentityProvider.Core.Domain
             int sequrityCodeLifetime)
             : base(creatorId)
         {
+            ClientGuid = new Guid();
             SecretHash = secretHash;
             RedirectUri = redirectUri;
             PostLogoutRedirectUri = postLogoutRedirectUri;

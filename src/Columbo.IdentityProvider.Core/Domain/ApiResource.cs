@@ -7,6 +7,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 {
     public class ApiResource : ManagedBaseEntity
     {
+        public Guid ApiGuid { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public ICollection<ApiResourceClaim> ApiResourceClaims { get; private set; }
@@ -21,6 +22,7 @@ namespace Columbo.IdentityProvider.Core.Domain
         public ApiResource(int creatorId, string name, string description)
             : base(creatorId)
         {
+            ApiGuid = new Guid();
             Name = name;
             Description = description;
 

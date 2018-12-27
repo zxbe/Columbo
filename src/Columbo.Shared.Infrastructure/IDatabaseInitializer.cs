@@ -6,7 +6,7 @@ namespace Columbo.Shared.Infrastructure
 {
     public interface IDatabaseInitializer
     {
-        void Initialize(IDatabaseContext context);
+        void InitializeDatabase(IDatabaseContext context);
         void Seed(IDatabaseContext context);
     }
 }

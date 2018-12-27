@@ -16,7 +16,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("IdentityResource");
 
-            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
             builder.Property(x => x.Description).HasMaxLength(500);
             builder.Property(x => x.ShowInDiscoveryDocument);
         }

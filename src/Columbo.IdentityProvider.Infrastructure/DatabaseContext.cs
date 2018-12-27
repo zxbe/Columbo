@@ -35,7 +35,7 @@ namespace Columbo.IdentityProvider.Infrastructure
 
         public void InitializeDatabase()
         {
-            _initializer.Initialize(this);
+            _initializer.InitializeDatabase(this);
             _initializer.Seed(this);
         }
     }
