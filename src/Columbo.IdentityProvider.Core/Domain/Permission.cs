@@ -14,8 +14,8 @@ namespace Columbo.IdentityProvider.Core.Domain
             RolePermissions = new List<RolePermission>();
         }
 
-        public Permission(int creatorId, string name)
-            : base(creatorId, name)
+        public Permission(int id, int creatorId, string name)
+            : base(id, creatorId, name)
         {
             RolePermissions = new List<RolePermission>();
         }

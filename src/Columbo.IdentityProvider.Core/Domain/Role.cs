@@ -8,7 +8,7 @@ namespace Columbo.IdentityProvider.Core.Domain
     public class Role : ManagedBaseEntity
     {
         public string Name { get; private set; }
-        public int InstanceId { get; private set; }
+        public int? InstanceId { get; private set; }
         public int RoleTypeId { get; private set; }
         public Instance Instance { get; private set; }
         public RoleType RoleType { get; private set; }
@@ -21,7 +21,7 @@ namespace Columbo.IdentityProvider.Core.Domain
             UserRoles = new List<UserRole>();
         }
 
-        public Role(int creatorId, string name, int instanceId, int roleTypeId)
+        public Role(int creatorId, string name, int? instanceId, int roleTypeId)
             : base(creatorId)
         {
             Name = name;
@@ -34,6 +34,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         public void AddPermissions(List<int> permissionsId, int creatorId)
         {
+            //todo sprawdzanie duplikatów
             permissionsId.ForEach(x => RolePermissions.Add(new RolePermission(creatorId, this.Id, x)));
         }
     }

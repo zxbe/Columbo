@@ -14,8 +14,8 @@ namespace Columbo.IdentityProvider.Core.Domain
             Roles = new List<Role>();
         }
 
-        public RoleType(int creatorId, string name)
-            : base(creatorId, name)
+        public RoleType(int id, int creatorId, string name)
+            : base(id, creatorId, name)
         {
             Roles = new List<Role>();
         }

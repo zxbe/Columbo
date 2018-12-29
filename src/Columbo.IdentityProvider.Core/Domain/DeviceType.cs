@@ -14,8 +14,8 @@ namespace Columbo.IdentityProvider.Core.Domain
             Devices = new List<Device>();
         }
 
-        public DeviceType(int creatorId, string name)
-            : base(creatorId, name)
+        public DeviceType(int id, int creatorId, string name)
+            : base(id, creatorId, name)
         {
             Devices = new List<Device>();
         }

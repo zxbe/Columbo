@@ -12,7 +12,6 @@ namespace Columbo.IdentityProvider.Infrastructure.Container
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<DatabaseInitializer>().As<IDatabaseInitializer>().InstancePerLifetimeScope();
             builder.RegisterType<DatabaseContext>().As<IDatabaseContext>().InstancePerLifetimeScope();
             builder.RegisterType<UserIdentityRepository>().As<IUserIdentityRepository>().InstancePerLifetimeScope();
         }

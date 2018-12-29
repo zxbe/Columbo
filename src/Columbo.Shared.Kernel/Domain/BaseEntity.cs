@@ -19,5 +19,12 @@ namespace Columbo.Shared.Kernel.Domain
             CreatorId = creatorId;
             CreateDate = DateTime.Now;
         }
+
+        public BaseEntity(int id, int creatorId)
+        {
+            Id = id;
+            CreatorId = creatorId;
+            CreateDate = DateTime.Now;
+        }
     }
 }

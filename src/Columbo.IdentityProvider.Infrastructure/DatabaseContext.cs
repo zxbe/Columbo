@@ -14,12 +14,10 @@ namespace Columbo.IdentityProvider.Infrastructure
 {
     public class DatabaseContext : DbContext, IDatabaseContext
     {
-        private readonly IDatabaseInitializer _initializer;
         private readonly IConfiguration _configuration;
 
-        public DatabaseContext(IDatabaseInitializer initializer, IConfiguration configuration)
+        public DatabaseContext(IConfiguration configuration)
         {
-            _initializer = initializer;
             _configuration = configuration;
         }
 
@@ -33,10 +31,12 @@ namespace Columbo.IdentityProvider.Infrastructure
             optionsBuilder.UseSqlServer(_configuration.GetConnectionString("IdentityProviderDatabase"));
         }
 
-        public void InitializeDatabase()
+        public void InitializeDatabase(IDatabaseInitializer databaseInitializer, bool seed)
         {
-            _initializer.InitializeDatabase(this);
-            _initializer.Seed(this);
+            databaseInitializer.InitializeDatabase(this);
+
+            if (seed)
+                databaseInitializer.Seed(this);
         }
     }
 }

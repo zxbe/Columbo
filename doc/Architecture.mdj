@@ -6176,6 +6176,21 @@
 												},
 												{
 													"_type": "ERDColumnView",
+													"_id": "AAAAAAFn+amDBsjY7vQ=",
+													"_parent": {
+														"$ref": "AAAAAAFn3/y1x9nlYR0="
+													},
+													"model": {
+														"$ref": "AAAAAAFn+amCu8jV3BE="
+													},
+													"font": "Arial;13;0",
+													"left": 1173,
+													"top": 1002,
+													"width": 106.70263671875,
+													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
 													"_id": "AAAAAAFn3/znnNn/odg=",
 													"_parent": {
 														"$ref": "AAAAAAFn3/y1x9nlYR0="
@@ -6185,7 +6200,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 1173,
-													"top": 1002,
+													"top": 1017,
 													"width": 106.70263671875,
 													"height": 13
 												},
@@ -6200,7 +6215,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 1173,
-													"top": 1017,
+													"top": 1032,
 													"width": 106.70263671875,
 													"height": 13
 												}
@@ -6209,14 +6224,14 @@
 											"left": 1168,
 											"top": 967,
 											"width": 116.70263671875,
-											"height": 68
+											"height": 83
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1168,
 									"top": 944,
 									"width": 116.70263671875,
-									"height": 91,
+									"height": 106,
 									"nameLabel": {
 										"$ref": "AAAAAAFn3/y1x9nkHPY="
 									},
@@ -7432,7 +7447,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 1239,
-											"top": 1053,
+											"top": 1068,
 											"height": 13,
 											"alpha": 0.5235987755982988,
 											"distance": 30,
@@ -7466,7 +7481,7 @@
 										"$ref": "AAAAAAFn3/y1xtnjrwg="
 									},
 									"lineStyle": 2,
-									"points": "1224:1034;1224:1144;1046:1144",
+									"points": "1224:1049;1224:1144;1046:1144",
 									"nameLabel": {
 										"$ref": "AAAAAAFn4cbV5Nyr0B4="
 									},
@@ -9370,6 +9385,15 @@
 										"$ref": "AAAAAAFn3/y1xNnhEBc="
 									},
 									"name": "Name",
+									"length": 0
+								},
+								{
+									"_type": "ERDColumn",
+									"_id": "AAAAAAFn+amCu8jV3BE=",
+									"_parent": {
+										"$ref": "AAAAAAFn3/y1xNnhEBc="
+									},
+									"name": "Type",
 									"length": 0
 								},
 								{

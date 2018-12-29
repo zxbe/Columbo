@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Columbo.IdentityProvider.Api.Settings;
 using Columbo.Shared.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,16 +35,8 @@ namespace Columbo.IdentityProvider.Api
             builder.RegisterModule<Columbo.IdentityProvider.Infrastructure.Container.ContainerModule>();
 
             ApplicationContainer = builder.Build();
-
-            ConfigureDatabase();
-
+            
             return new AutofacServiceProvider(this.ApplicationContainer);
-        }
-
-        private void ConfigureDatabase()
-        {
-            var databaseContext = ApplicationContainer.Resolve<IDatabaseContext>();
-            databaseContext.InitializeDatabase();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

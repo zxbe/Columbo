@@ -7,6 +7,7 @@ namespace Columbo.IdentityProvider.Core.Domain
 {
     public class ClaimType : DictionaryBaseEntity
     {
+        public string Type { get; private set; }
         public ICollection<ApiResourceClaim> ApiResourceClaims { get; private set; }
         public ICollection<IdentityResourceClaim> IdentityResourceClaims { get; private set; }
 
@@ -16,9 +17,10 @@ namespace Columbo.IdentityProvider.Core.Domain
             IdentityResourceClaims = new List<IdentityResourceClaim>();
         }
 
-        public ClaimType(int creatorId, string name)
+        public ClaimType(int creatorId, string name, string type)
             : base(creatorId, name)
         {
+            Type = type;
             ApiResourceClaims = new List<ApiResourceClaim>();
             IdentityResourceClaims = new List<IdentityResourceClaim>();
         }

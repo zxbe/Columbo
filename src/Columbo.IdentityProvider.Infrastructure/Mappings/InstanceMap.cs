@@ -15,6 +15,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             base.Configure(builder);
 
             builder.ToTable("Instance");
+
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }

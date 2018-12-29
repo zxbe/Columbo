@@ -17,5 +17,11 @@ namespace Columbo.Shared.Kernel.Domain
         {
             Name = name;
         }
+
+        public DictionaryBaseEntity(int id, int creatorId, string name)
+            : base(id, creatorId)
+        {
+            Name = name;
+        }
     }
 }

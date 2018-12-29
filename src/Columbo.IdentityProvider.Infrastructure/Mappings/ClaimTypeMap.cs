@@ -15,6 +15,9 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             base.Configure(builder);
 
             builder.ToTable("ClaimType");
+
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Type).HasMaxLength(100);
         }
     }
 }
