@@ -5,12 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="QueryHandlers\" />
+    <Folder Include="Queries\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="autofac.extensions.dependencyinjection" Version="4.3.1" />
-    <PackageReference Include="IdentityServer4" Version="2.3.2" />
+    <PackageReference Include="identityserver4" Version="2.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>

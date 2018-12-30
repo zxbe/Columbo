@@ -89,7 +89,7 @@ namespace Columbo.IdentityProvider.Api
 
         private Instance SeedInstance(IDatabaseContext context)
         {
-            var instanceEntity = new Instance(1, "Main");
+            var instanceEntity = new Instance(1, "Main", "Main instance");
             var existingInstance = context.Set<Instance>().FirstOrDefault(x => x.Name.Equals(instanceEntity.Name));
 
             if (existingInstance == null)

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Columbo.IdentityProvider.Infrastructure.Mappings
 {
-    public sealed class InstanceMap : DictionaryBaseEntityMap<Instance>
+    public sealed class InstanceMap : ManagedBaseEntityMap<Instance>
     {
         public override void Configure(EntityTypeBuilder<Instance> builder)
         {
@@ -16,7 +16,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.ToTable("Instance");
 
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Description).HasMaxLength(500);
         }
     }
 }
