@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.Shared.Api.Exceptions
+namespace Columbo.Shared.Infrastructure.Exceptions
 {
     public class AttributeNotFoundException : Exception
     {

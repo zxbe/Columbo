@@ -1,5 +1,5 @@
 ﻿using Columbo.Shared.Api.Attributes;
-using Columbo.Shared.Api.Exceptions;
+using Columbo.Shared.Infrastructure.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

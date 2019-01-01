@@ -5,9 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="StoredProcedures\Scripts\PR_GetApiResourceByName.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetApiResources.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResources.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourceByName.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResources.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResources.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="autofac" Version="4.8.1" />
-    <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.0" />
-    <PackageReference Include="microsoft.entityframeworkcore.relational" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
   </ItemGroup>
 

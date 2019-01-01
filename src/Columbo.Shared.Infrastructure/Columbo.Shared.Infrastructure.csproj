@@ -5,12 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <None Remove="Sql\Types\Scripts\IntList.sql" />
+    <None Remove="Sql\Types\Scripts\StringList.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Sql\Types\Scripts\IntList.sql" />
+    <EmbeddedResource Include="Sql\Types\Scripts\StringList.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dapper" Version="1.50.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.relational" Version="2.2.0" />
+    <PackageReference Include="Microsoft.SQLServer.SMO" Version="150.18068.0-xplat" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Sql\StoredProcedures\" />
   </ItemGroup>
 
 </Project>
