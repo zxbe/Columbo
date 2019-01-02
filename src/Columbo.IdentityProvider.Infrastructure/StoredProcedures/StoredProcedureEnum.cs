@@ -1,4 +1,4 @@
-﻿using Columbo.Shared.Infrastructure.Attributes;
+﻿using Columbo.Shared.Infrastructure.Sql.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;

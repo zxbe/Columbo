@@ -1,28 +1,32 @@
-﻿using Columbo.Shared.Infrastructure.Attributes;
+﻿using Columbo.Shared.Infrastructure.Sql.Attributes;
 using Columbo.Shared.Infrastructure.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Columbo.Shared.Infrastructure.Sql;
 
 namespace Columbo.Shared.Infrastructure.Extensions
 {
     public static class EnumExtension
     {
-        public static string GetAssignedScriptName(this Enum @enum)
+        public static SqlScriptInfo GetSqlScriptInfo(this Enum @enum)
         {
             var fieldInfo = @enum.GetType().GetField(@enum.ToString());
 
             var attributes = fieldInfo.GetCustomAttributes(typeof(SqlScriptAttribute), false);
             if (attributes.Count() > 0)
-                return (attributes.First() as SqlScriptAttribute).Name;
+            {
+                var attribute = attributes.First() as SqlScriptAttribute;
+                return new SqlScriptInfo(attribute.FileName, attribute.Name);
+            }
             else
                 throw new AttributeNotFoundException("DescriptionAttribute not found");
         }
 
-        public static List<string> GetAssignedScriptNames<T>()
+        public static List<SqlScriptInfo> GetSqlScriptInfoList<T>()
         {
-            var scriptNames = new List<string>();
+            var sqlScriptInfoList = new List<SqlScriptInfo>();
             var type = typeof(T);
 
             if (!type.IsEnum)
@@ -34,12 +38,15 @@ namespace Columbo.Shared.Infrastructure.Extensions
             {
                 var attributes = field.GetCustomAttributes(typeof(SqlScriptAttribute), false);
                 if (attributes.Count() > 0)
-                    scriptNames.Add((attributes.First() as SqlScriptAttribute).Name);
+                {
+                    var attribute = attributes.First() as SqlScriptAttribute;
+                    sqlScriptInfoList.Add(new SqlScriptInfo(attribute.FileName, attribute.Name));
+                }
                 else
                     throw new AttributeNotFoundException($"DescriptionAttribute not found for a field {field.Name}");
             }
 
-            return scriptNames;
+            return sqlScriptInfoList;
         }
     }
 }

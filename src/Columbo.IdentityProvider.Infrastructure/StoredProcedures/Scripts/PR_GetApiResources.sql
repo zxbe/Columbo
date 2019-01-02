@@ -4,9 +4,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF EXISTS(SELECT * FROM sys.procedures WHERE Name = 'PR_GetApiResources')
-	DROP PROCEDURE PR_GetApiResources
-GO
 -- =============================================
 -- Author:		PB
 -- Create date: 01.01.2019

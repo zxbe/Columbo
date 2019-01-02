@@ -19,6 +19,7 @@ using System.IO;
 using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
+using Columbo.Shared.Infrastructure.Sql;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
@@ -67,14 +68,17 @@ namespace Columbo.IdentityProvider.Infrastructure
         private void CreateStoredProcedures(Server server)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var scriptNames = EnumExtension.GetAssignedScriptNames<StoredProcedureEnum>()
-                .Select(x => assembly.GetManifestResourceNames().First(y => y.EndsWith(x)));
-
-            foreach (var scriptName in scriptNames)
-            {
-                using (var scriptStream = new StreamReader(assembly.GetManifestResourceStream(scriptName)))
+            var sqlScriptInfoList = EnumExtension.GetSqlScriptInfoList<StoredProcedureEnum>();
+            
+            foreach (var sqlScriptInfo in sqlScriptInfoList)
+            {                
+                if (!SqlHelper.CheckIfStoredProcedureExists(Database.GetDbConnection(), sqlScriptInfo.Name))
                 {
-                    server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                    var scriptResorceName = assembly.GetManifestResourceNames().First(y => y.EndsWith(sqlScriptInfo.FileName));
+                    using (var scriptStream = new StreamReader(assembly.GetManifestResourceStream(scriptResorceName)))
+                    {
+                        server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                    }
                 }
             }
         }
@@ -102,13 +106,16 @@ namespace Columbo.IdentityProvider.Infrastructure
         {
             var sqlTypesAssembly = Assembly.GetAssembly(typeof(ITableValuedType<>));
             var sqlTypes = sqlTypesAssembly.GetTypes().Where(x => x.GetTypeInfo().ImplementedInterfaces.Contains(typeof(ITableValuedType)) && x.IsClass);
-
-            foreach (var type in sqlTypes)
+            
+            foreach (var sqlScriptInfo in sqlTypes.GetSqlScriptInfoList())
             {
-                var scriptName = sqlTypesAssembly.GetManifestResourceNames().First(x => x.EndsWith(type.GetAssignedScriptName()));
-                using (var scriptStream = new StreamReader(sqlTypesAssembly.GetManifestResourceStream(scriptName)))
+                if (!SqlHelper.CheckIfTypeExists(Database.GetDbConnection(), sqlScriptInfo.Name))
                 {
-                    server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                    var scriptResorceName = sqlTypesAssembly.GetManifestResourceNames().First(x => x.EndsWith(sqlScriptInfo.FileName));
+                    using (var scriptStream = new StreamReader(sqlTypesAssembly.GetManifestResourceStream(scriptResorceName)))
+                    {
+                        server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                    }
                 }
             }
         }

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using Columbo.Shared.Infrastructure.Attributes;
+using Columbo.Shared.Infrastructure.Sql.Attributes;
 using Dapper;
 
 namespace Columbo.Shared.Infrastructure.Sql.Types
