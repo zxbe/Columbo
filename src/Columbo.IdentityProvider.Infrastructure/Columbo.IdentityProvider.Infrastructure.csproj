@@ -5,21 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="StoredProcedures\Scripts\PR_GetApiResourceByName.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetApiResources.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResources.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetApiResourceByName.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetApiResources.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetApiResourcesByNames.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetClientByGuid.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetIdentityResources.sql" />
+    <None Remove="Sql\StoredProcedure\Scripts\PR_GetIdentityResourcesByNames.sql" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourceByName.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResources.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResources.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetApiResourceByName.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetApiResources.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetApiResourcesByNames.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetClientByGuid.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetIdentityResources.sql" />
+    <EmbeddedResource Include="Sql\StoredProcedure\Scripts\PR_GetIdentityResourcesByNames.sql" />
   </ItemGroup>
 
   <ItemGroup>

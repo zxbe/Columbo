@@ -16,7 +16,7 @@ using System.Linq;
 using Columbo.Shared.Infrastructure.Sql.Types;
 using Columbo.Shared.Infrastructure.Extensions;
 using System.IO;
-using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
+using Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedures;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using Columbo.Shared.Infrastructure.Sql;

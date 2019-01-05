@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.IdentityProvider.Infrastructure.StoredProcedures
+namespace Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedure
 {
     public enum StoredProcedureEnum
     {
