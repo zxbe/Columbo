@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Columbo.IdentityProvider.Api.Dtos
 {
-    public class UserDto : ManagedBaseDto
+    public class InstanceDto : ManagedBaseDto
     {
         public string Name { get; set; }
-        public string Surname { get; set; }
-        public string EmailAddress { get; set; }
+        public string Description { get; set; }
     }
 }

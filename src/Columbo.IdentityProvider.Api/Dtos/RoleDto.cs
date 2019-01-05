@@ -1,4 +1,5 @@
-﻿using Columbo.Shared.Api.Security.Enums;
+﻿using Columbo.Shared.Api.Dtos;
+using Columbo.Shared.Api.Security.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Columbo.IdentityProvider.Api.Dtos
 {
-    public class RoleDto
+    public class RoleDto : ManagedBaseDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int InstanceId { get; set; }
         public RoleTypeEnum RoleType { get; set; }
-        public int CreatorId { get; set; }
         public ICollection<PermissionEnum> Permissions { get; set; }
 
         public RoleDto()
