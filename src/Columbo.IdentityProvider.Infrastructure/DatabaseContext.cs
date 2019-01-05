@@ -42,12 +42,9 @@ namespace Columbo.IdentityProvider.Infrastructure
             optionsBuilder.UseSqlServer(_configuration.GetConnectionString("IdentityProviderDatabase"));
         }
 
-        public void InitializeDatabase(IDatabaseInitializer databaseInitializer, bool seed)
+        public void InitializeDatabase(IDatabaseSeeder databaseSeeder, bool seed)
         {
-            if (databaseInitializer == null)
-                throw new Exception(); //todo exception
-
-            databaseInitializer.InitializeDatabase(this);
+            Database.EnsureCreated(); // Migrate() to use migration
 
             var connection = Database.GetDbConnection() as SqlConnection;
             if (connection != null)
@@ -60,9 +57,9 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
             else
                 throw new Exception(); //todo exception
-
+            
             if (seed)
-                databaseInitializer.Seed(this);
+                databaseSeeder.Seed(this);
         }
 
         private void CreateStoredProcedures(Server server)
@@ -104,7 +101,7 @@ namespace Columbo.IdentityProvider.Infrastructure
 
         private void CreateTypes(Server server)
         {
-            var sqlTypesAssembly = Assembly.GetAssembly(typeof(ITableValuedType<>));
+            var sqlTypesAssembly = Assembly.GetAssembly(typeof(ITableValuedType));
             var sqlTypes = sqlTypesAssembly.GetTypes().Where(x => x.GetTypeInfo().ImplementedInterfaces.Contains(typeof(ITableValuedType)) && x.IsClass);
             
             foreach (var sqlScriptInfo in sqlTypes.GetSqlScriptInfoList())

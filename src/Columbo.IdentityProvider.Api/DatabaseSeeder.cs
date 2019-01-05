@@ -12,13 +12,8 @@ using Columbo.Shared.Api.Security;
 
 namespace Columbo.IdentityProvider.Api
 {
-    internal class DatabaseInitializer : IDatabaseInitializer
+    internal class DatabaseSeeder : IDatabaseSeeder
     {
-        public void InitializeDatabase(IDatabaseContext context)
-        {
-            context.Database.EnsureCreated(); // Migrate() to use migration
-        }
-
         public void Seed(IDatabaseContext context)
         {
             SeedClaim(context);

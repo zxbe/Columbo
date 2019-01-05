@@ -14,6 +14,6 @@ namespace Columbo.Shared.Infrastructure
         EntityEntry<TEntity> Attach<TEntity>(TEntity entity) where TEntity : class;
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         int SaveChanges();
-        void InitializeDatabase(IDatabaseInitializer databaseInitializer, bool seed);
+        void InitializeDatabase(IDatabaseSeeder databaseSeeder, bool seed);
     }
 }

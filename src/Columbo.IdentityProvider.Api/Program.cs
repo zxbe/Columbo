@@ -35,7 +35,7 @@ namespace Columbo.IdentityProvider.Api
                 {
                     var databaseContext = services.GetRequiredService<IDatabaseContext>();
                     var configuration = services.GetRequiredService<IConfiguration>();
-                    databaseContext.InitializeDatabase(new DatabaseInitializer(), configuration.GetSettings<AppSettings>().SeedEnable);
+                    databaseContext.InitializeDatabase(new DatabaseSeeder(), configuration.GetSettings<AppSettings>().SeedEnable);
                 }
                 catch (Exception e)
                 {
