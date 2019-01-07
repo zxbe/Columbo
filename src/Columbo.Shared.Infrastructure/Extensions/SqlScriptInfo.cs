@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Columbo.Shared.Infrastructure.Sql
+namespace Columbo.Shared.Infrastructure.Extensions
 {
     public class SqlScriptInfo
     {

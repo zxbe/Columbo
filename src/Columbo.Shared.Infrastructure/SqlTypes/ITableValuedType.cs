@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using static Dapper.SqlMapper;
 
-namespace Columbo.Shared.Infrastructure.Sql.Types
+namespace Columbo.Shared.Infrastructure.SqlTypes
 {
     public interface ITableValuedType
     {

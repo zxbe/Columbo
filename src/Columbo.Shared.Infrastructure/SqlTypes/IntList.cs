@@ -1,11 +1,11 @@
-﻿using Columbo.Shared.Infrastructure.Sql.Attributes;
+﻿using Columbo.Shared.Infrastructure.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using static Dapper.SqlMapper;
 
-namespace Columbo.Shared.Infrastructure.Sql.Types
+namespace Columbo.Shared.Infrastructure.SqlTypes
 {
     [SqlScript("IntList.sql")]
     public class IntList : ITableValuedType<int>

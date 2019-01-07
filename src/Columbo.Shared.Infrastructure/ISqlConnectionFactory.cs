@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Columbo.Shared.Infrastructure.Sql
+namespace Columbo.Shared.Infrastructure
 {
     public interface ISqlConnectionFactory
     {

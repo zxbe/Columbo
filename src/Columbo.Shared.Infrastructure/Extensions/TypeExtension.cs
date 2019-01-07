@@ -1,11 +1,11 @@
-﻿using Columbo.Shared.Infrastructure.Sql.Attributes;
+﻿using Columbo.Shared.Infrastructure.Attributes;
 using Columbo.Shared.Infrastructure.Exceptions;
-using Columbo.Shared.Infrastructure.Sql.Types;
+using Columbo.Shared.Infrastructure.SqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Columbo.Shared.Infrastructure.Sql;
+using Columbo.Shared.Infrastructure;
 
 namespace Columbo.Shared.Infrastructure.Extensions
 {

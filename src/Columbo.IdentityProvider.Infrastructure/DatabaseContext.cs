@@ -1,35 +1,27 @@
 ﻿using Columbo.Shared.Infrastructure;
-using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
-using Dapper;
-using System.Data;
 using System.Linq;
-using Columbo.Shared.Infrastructure.Sql.Types;
+using Columbo.Shared.Infrastructure.SqlTypes;
 using Columbo.Shared.Infrastructure.Extensions;
 using System.IO;
-using Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedures;
-using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
-using Columbo.Shared.Infrastructure.Sql;
+using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
+using Columbo.Shared.Infrastructure.Helpers;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
     public class DatabaseContext : DbContext, IDatabaseContext
     {
         private readonly IConfiguration _configuration;
+        private readonly ISqlScriptExecutor _sqlScriptExecutor;
 
-        public DatabaseContext(IConfiguration configuration)
+        public DatabaseContext(IConfiguration configuration, ISqlScriptExecutor sqlScriptExecutor)
         {
             _configuration = configuration;
+            _sqlScriptExecutor = sqlScriptExecutor;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,24 +37,15 @@ namespace Columbo.IdentityProvider.Infrastructure
         public void InitializeDatabase(IDatabaseSeeder databaseSeeder, bool seed)
         {
             Database.EnsureCreated(); // Migrate() to use migration
-
-            var connection = Database.GetDbConnection() as SqlConnection;
-            if (connection != null)
-            {
-                ServerConnection serverConnection = new ServerConnection(connection);
-                Server server = new Server(serverConnection);
-
-                CreateTypes(server);
-                CreateStoredProcedures(server);
-            }
-            else
-                throw new Exception(); //todo exception
+            
+            CreateTypes();
+            CreateStoredProcedures();
             
             if (seed)
                 databaseSeeder.Seed(this);
         }
 
-        private void CreateStoredProcedures(Server server)
+        private void CreateStoredProcedures()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var sqlScriptInfoList = EnumExtension.GetSqlScriptInfoList<StoredProcedureEnum>();
@@ -74,7 +57,8 @@ namespace Columbo.IdentityProvider.Infrastructure
                     var scriptResorceName = assembly.GetManifestResourceNames().First(y => y.EndsWith(sqlScriptInfo.FileName));
                     using (var scriptStream = new StreamReader(assembly.GetManifestResourceStream(scriptResorceName)))
                     {
-                        server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                        var connection = Database.GetDbConnection() as SqlConnection;
+                        _sqlScriptExecutor.Execute(scriptStream.ReadToEnd(), connection);
                     }
                 }
             }
@@ -99,7 +83,7 @@ namespace Columbo.IdentityProvider.Infrastructure
         //    }
         //}
 
-        private void CreateTypes(Server server)
+        private void CreateTypes()
         {
             var sqlTypesAssembly = Assembly.GetAssembly(typeof(ITableValuedType));
             var sqlTypes = sqlTypesAssembly.GetTypes().Where(x => x.GetTypeInfo().ImplementedInterfaces.Contains(typeof(ITableValuedType)) && x.IsClass);
@@ -111,7 +95,8 @@ namespace Columbo.IdentityProvider.Infrastructure
                     var scriptResorceName = sqlTypesAssembly.GetManifestResourceNames().First(x => x.EndsWith(sqlScriptInfo.FileName));
                     using (var scriptStream = new StreamReader(sqlTypesAssembly.GetManifestResourceStream(scriptResorceName)))
                     {
-                        server.ConnectionContext.ExecuteNonQuery(scriptStream.ReadToEnd());
+                        var connection = Database.GetDbConnection() as SqlConnection;
+                        _sqlScriptExecutor.Execute(scriptStream.ReadToEnd(), connection);
                     }
                 }
             }

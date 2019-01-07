@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using Columbo.Shared.Infrastructure.Sql.Attributes;
+using Columbo.Shared.Infrastructure.Attributes;
 using Dapper;
 
-namespace Columbo.Shared.Infrastructure.Sql.Types
+namespace Columbo.Shared.Infrastructure.SqlTypes
 {
     [SqlScript("StringList.sql")]
     public class StringList : ITableValuedType<string>

@@ -6,7 +6,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 
-namespace Columbo.Shared.Infrastructure.Sql
+namespace Columbo.Shared.Infrastructure.Helpers
 {
     public class SqlHelper
     {

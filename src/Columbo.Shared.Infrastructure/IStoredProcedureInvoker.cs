@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using static Dapper.SqlMapper;
 
-namespace Columbo.Shared.Infrastructure.Sql
+namespace Columbo.Shared.Infrastructure
 {
     public interface IStoredProcedureInvoker<TEnum> where TEnum : struct // todo where TEnum : Enum
     {

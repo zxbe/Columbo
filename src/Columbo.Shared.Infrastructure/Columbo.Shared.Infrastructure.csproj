@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Sql\Types\Scripts\IntList.sql" />
-    <None Remove="Sql\Types\Scripts\StringList.sql" />
+    <None Remove="SqlTypes\Scripts\IntList.sql" />
+    <None Remove="SqlTypes\Scripts\StringList.sql" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Sql\Types\Scripts\IntList.sql" />
-    <EmbeddedResource Include="Sql\Types\Scripts\StringList.sql" />
+    <EmbeddedResource Include="SqlTypes\Scripts\IntList.sql" />
+    <EmbeddedResource Include="SqlTypes\Scripts\StringList.sql" />
   </ItemGroup>
 
   <ItemGroup>

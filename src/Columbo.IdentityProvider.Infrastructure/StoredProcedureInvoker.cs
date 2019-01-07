@@ -1,13 +1,15 @@
-﻿using Columbo.Shared.Infrastructure.Extensions;
-using Columbo.Shared.Infrastructure.Sql;
+﻿using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
+using Columbo.Shared.Infrastructure.Extensions;
+using Columbo.Shared.Infrastructure;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using static Dapper.SqlMapper;
 
-namespace Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedure
+namespace Columbo.IdentityProvider.Infrastructure
 {
     public class StoredProcedureInvoker : IStoredProcedureInvoker<StoredProcedureEnum>
     {
@@ -18,7 +20,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedure
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public IEnumerable<T> Query<T>(SqlMapper.IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public IEnumerable<T> Query<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
@@ -27,7 +29,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Sql.StoredProcedure
             }
         }
 
-        public void Execute(SqlMapper.IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public void Execute(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {

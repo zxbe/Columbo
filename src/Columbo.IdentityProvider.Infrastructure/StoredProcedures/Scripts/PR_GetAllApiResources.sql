@@ -7,9 +7,9 @@ GO
 -- =============================================
 -- Author:		PB
 -- Create date: 01.01.2019
--- Description:	Procedure gets all identity resources
+-- Description:	Procedure gets all api resources
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetIdentityResources]
+CREATE PROCEDURE [dbo].[PR_GetAllApiResources]
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -21,9 +21,10 @@ BEGIN
 		[CreatorId],
 		[CreateDate],
 		[UpdateDate],
+		[ApiGuid],
 		[Name],
 		[Description],
-		[ShowInDiscoveryDocument]
-	FROM [dbo].[IdentityResource]
+		[InstanceId]
+	FROM [dbo].[ApiResource]
 END
 GO
