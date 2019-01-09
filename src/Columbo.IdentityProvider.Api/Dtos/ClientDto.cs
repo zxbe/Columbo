@@ -16,5 +16,13 @@ namespace Columbo.IdentityProvider.Api.Dtos
         public int AccessTokenLifetime { get; set; }
         public int SqurityCodeLifetime { get; set; }
         public bool IsActive { get; set; }
+        public ICollection<ApiResourceDto> ApiResources { get; set; }
+        public ICollection<IdentityResourceDto> IdentityResources { get; set; }
+
+        public ClientDto()
+        {
+            ApiResources = new List<ApiResourceDto>();
+            IdentityResources = new List<IdentityResourceDto>();
+        }
     }
 }

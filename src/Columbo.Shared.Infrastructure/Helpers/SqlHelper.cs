@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Columbo.Shared.Infrastructure.Helpers
 {
-    public class SqlHelper
+    public static class SqlHelper
     {
         public static bool CheckIfStoredProcedureExists(IDbConnection connection, string procedureName)
         {

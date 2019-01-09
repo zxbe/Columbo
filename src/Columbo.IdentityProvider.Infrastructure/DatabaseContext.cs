@@ -64,25 +64,6 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        //private void CreateSqlTypes()
-        //{
-        //    string sql = "test";
-
-        //    DataTable dt = new DataTable();
-        //    dt.Columns.Add("Id", typeof(int));
-        //    dt.Rows.Add(1);
-        //    dt.Rows.Add(2);
-        //    dt.Rows.Add(3);
-
-        //    using (var connection = Database.GetDbConnection())//new SqlConnection(_configuration.GetConnectionString("IdentityProviderDatabase")))
-        //    {
-        //        var param = new DynamicParameters();
-        //        param.Add("@idList", dt.AsTableValuedParameter("IdList"));
-
-        //        var test = connection.Query<int>(sql, param, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
-
         private void CreateTypes()
         {
             var sqlTypesAssembly = Assembly.GetAssembly(typeof(ITableValuedType));

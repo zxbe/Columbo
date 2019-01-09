@@ -1,7 +1,9 @@
 ﻿using Columbo.Shared.Infrastructure.Attributes;
+using Dapper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using static Dapper.SqlMapper;
 
@@ -75,9 +77,20 @@ namespace Columbo.Shared.Infrastructure.SqlTypes
             return _intList.GetEnumerator();
         }
 
-        public ICustomQueryParameter AsTableValuedParameter()
+        public IDynamicParameters AsTableValuedParameter(string parameterName)
         {
-            throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Value", typeof(int));
+
+            foreach (var value in _intList)
+            {
+                dt.Rows.Add(value);
+            }
+
+            var parameter = new DynamicParameters();
+            parameter.Add(parameterName, dt.AsTableValuedParameter(nameof(IntList)));
+
+            return parameter;
         }
     }
 }

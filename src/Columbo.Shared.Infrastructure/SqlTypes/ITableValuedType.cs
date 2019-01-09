@@ -11,6 +11,6 @@ namespace Columbo.Shared.Infrastructure.SqlTypes
 
     public interface ITableValuedType<T> : ITableValuedType, IList<T>
     {
-        ICustomQueryParameter AsTableValuedParameter();
+        IDynamicParameters AsTableValuedParameter(string parameterName);
     }
 }

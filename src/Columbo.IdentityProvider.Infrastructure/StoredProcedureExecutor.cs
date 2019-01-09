@@ -11,16 +11,16 @@ using static Dapper.SqlMapper;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
-    public class StoredProcedureInvoker : IStoredProcedureInvoker<StoredProcedureEnum>
+    public class StoredProcedureExecutor : IStoredProcedureExecutor<StoredProcedureEnum>
     {
         private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
-        public StoredProcedureInvoker(ISqlConnectionFactory sqlConnectionFactory)
+        public StoredProcedureExecutor(ISqlConnectionFactory sqlConnectionFactory)
         {
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public IEnumerable<T> Query<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public IEnumerable<T> Execute<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
@@ -29,12 +29,21 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public void Execute(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public IEnumerable<T> Execute<T>(StoredProcedureEnum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
                 var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
-                sqlConnection.Execute(procedureName, parameters, commandType: CommandType.StoredProcedure);
+                return sqlConnection.Query<T>(procedureName, null, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public T ExecuteSingle<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        {
+            using (var sqlConnection = _sqlConnectionFactory.Create())
+            {
+                var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
+                return sqlConnection.QuerySingle<T>(procedureName, parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }
