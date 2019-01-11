@@ -10,11 +10,12 @@
     <None Remove="StoredProcedures\Scripts\PR_GetApiResourceByName.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetApiResourceClaims.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetApiResourcesClaims.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetClientApiResources.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetClientIdentityResources.sql" />
-    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResourceClaims.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+    <None Remove="StoredProcedures\Scripts\PR_GetIdentityResourcesClaims.sql" />
     <None Remove="StoredProcedures\Scripts\PR_GetInstancesByIds.sql" />
   </ItemGroup>
 
@@ -23,12 +24,13 @@
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetAllApiResources.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourceClaims.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourcesByNames.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetApiResourcesClaims.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetClientApiResources.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetClientByGuid.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetAllIdentityResources.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetClientIdentityResources.sql" />
-    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResourceClaims.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResourcesByNames.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetIdentityResourcesClaims.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\PR_GetInstancesByIds.sql" />
   </ItemGroup>
 

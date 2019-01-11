@@ -42,11 +42,13 @@ namespace Columbo.IdentityProvider.Api.Stores
             var parameter = new StringList(scopeNames.ToList()).AsTableValuedParameter("apiResourcesNames");
             var apiResources = _storedProcedureExecutor.Execute<ApiResourceDto>(parameter, StoredProcedureEnum.GetApiResourcesByNames);
 
+            var apiResourcesIdParameter = new IntList(apiResources.Select(x => x.Id).ToList()).AsTableValuedParameter("apiResourcesId");
+            var apiResourcesClaims = _storedProcedureExecutor.Execute<ResourceClaim>(apiResourcesIdParameter, StoredProcedureEnum.GetApiResourcesClaims);
+            
             var identityServerApiResources = new List<ApiResource>();
             foreach (var apiResource in apiResources)
             {
-                var claims = _storedProcedureExecutor.Execute<string>(AsParameter(apiResource.Id, "apiResourceId"), StoredProcedureEnum.GetApiResourceClaims);
-                apiResource.ClaimTypes = claims.ToList();
+                apiResource.ClaimTypes = apiResourcesClaims.Where(x => x.ResourceId == apiResource.Id).Select(x => x.ClaimType).ToList();
 
                 var identityServerApiResource = new ApiResource
                 {
@@ -67,11 +69,13 @@ namespace Columbo.IdentityProvider.Api.Stores
             var parameter = new StringList(scopeNames.ToList()).AsTableValuedParameter("identityResourcesNames");
             var identityResources = _storedProcedureExecutor.Execute<IdentityResourceDto>(parameter, StoredProcedureEnum.GetIdentityResourcesByNames);
 
+            var identityResourcesIdParameter = new IntList(identityResources.Select(x => x.Id).ToList()).AsTableValuedParameter("identityResourcesId");
+            var identityResourcesClaims = _storedProcedureExecutor.Execute<ResourceClaim>(identityResourcesIdParameter, StoredProcedureEnum.GetIdentityResourcesClaims);
+
             var identityServerIdentityResources = new List<IdentityResource>();
             foreach (var identityResource in identityResources)
             {
-                var claims = _storedProcedureExecutor.Execute<string>(AsParameter(identityResource.Id, "identityResourceId"), StoredProcedureEnum.GetIdentityResourceClaims);
-                identityResource.ClaimTypes = claims.ToList();
+                identityResource.ClaimTypes = identityResourcesClaims.Where(x => x.ResourceId == identityResource.Id).Select(x => x.ClaimType).ToList();
 
                 var identityServerIdentityResource = new IdentityResource()
                 {
@@ -90,11 +94,16 @@ namespace Columbo.IdentityProvider.Api.Stores
             var apiResources = _storedProcedureExecutor.Execute<ApiResourceDto>(StoredProcedureEnum.GetAllApiResources);
             var identityResources = _storedProcedureExecutor.Execute<IdentityResourceDto>(StoredProcedureEnum.GetAllIdentityResources);
 
+            var apiResourcesIdParameter = new IntList(apiResources.Select(x => x.Id).ToList()).AsTableValuedParameter("apiResourcesId");
+            var apiResourcesClaims = _storedProcedureExecutor.Execute<ResourceClaim>(apiResourcesIdParameter, StoredProcedureEnum.GetApiResourcesClaims);
+
+            var identityResourcesIdParameter = new IntList(identityResources.Select(x => x.Id).ToList()).AsTableValuedParameter("identityResourcesId");
+            var identityResourcesClaims = _storedProcedureExecutor.Execute<ResourceClaim>(identityResourcesIdParameter, StoredProcedureEnum.GetIdentityResourcesClaims);
+
             var identityServerApiResources = new List<ApiResource>();
             foreach (var apiResource in apiResources)
             {
-                var claims = _storedProcedureExecutor.Execute<string>(AsParameter(apiResource.Id, "apiResourceId"), StoredProcedureEnum.GetApiResourceClaims);
-                apiResource.ClaimTypes = claims.ToList();
+                apiResource.ClaimTypes = apiResourcesClaims.Where(x => x.ResourceId == apiResource.Id).Select(x => x.ClaimType).ToList();
 
                 var identityServerApiResource = new ApiResource
                 {
@@ -110,8 +119,7 @@ namespace Columbo.IdentityProvider.Api.Stores
             var identityServerIdentityResources = new List<IdentityResource>();
             foreach (var identityResource in identityResources)
             {
-                var claims = _storedProcedureExecutor.Execute<string>(AsParameter(identityResource.Id, "identityResourceId"), StoredProcedureEnum.GetIdentityResourceClaims);
-                identityResource.ClaimTypes = claims.ToList();
+                identityResource.ClaimTypes = identityResourcesClaims.Where(x => x.ResourceId == identityResource.Id).Select(x => x.ClaimType).ToList();
 
                 var identityServerIdentityResource = new IdentityResource()
                 {

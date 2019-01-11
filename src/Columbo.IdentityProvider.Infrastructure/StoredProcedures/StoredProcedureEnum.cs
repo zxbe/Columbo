@@ -32,6 +32,9 @@ namespace Columbo.IdentityProvider.Infrastructure.StoredProcedures
         [SqlScript("PR_GetApiResourceClaims.sql")]
         GetApiResourceClaims,
 
+        [SqlScript("PR_GetApiResourcesClaims.sql")]
+        GetApiResourcesClaims,
+
         //Identity resource
 
         [SqlScript("PR_GetAllIdentityResources.sql")]
@@ -40,8 +43,8 @@ namespace Columbo.IdentityProvider.Infrastructure.StoredProcedures
         [SqlScript("PR_GetIdentityResourcesByNames.sql")]
         GetIdentityResourcesByNames,
 
-        [SqlScript("PR_GetIdentityResourceClaims.sql")]
-        GetIdentityResourceClaims,
+        [SqlScript("PR_GetIdentityResourcesClaims.sql")]
+        GetIdentityResourcesClaims,
 
         //Instance
 
