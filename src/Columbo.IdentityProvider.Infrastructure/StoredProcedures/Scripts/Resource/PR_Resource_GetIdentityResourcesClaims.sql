@@ -9,7 +9,7 @@ GO
 -- Create date: 11.01.2019
 -- Description:	Procedure gets claims of identity resources
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetIdentityResourcesClaims]
+CREATE PROCEDURE [dbo].[PR_Resource_GetIdentityResourcesClaims]
 	@identityResourcesId IntList READONLY
 AS
 BEGIN

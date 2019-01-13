@@ -13,7 +13,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Container
             builder.RegisterType<DatabaseContext>().As<IDatabaseContext>().InstancePerLifetimeScope();
             builder.RegisterType<UserIdentityRepository>().As<IUserIdentityRepository>().InstancePerLifetimeScope();
             builder.RegisterType<SqlConnectionFactory>().As<ISqlConnectionFactory>().InstancePerLifetimeScope();
-            builder.RegisterType<StoredProcedureExecutor>().As<IStoredProcedureExecutor<StoredProcedureEnum>>().InstancePerLifetimeScope();
+            builder.RegisterType<StoredProcedureExecutor>().As<IStoredProcedureExecutor>().InstancePerLifetimeScope();
             builder.RegisterType<SqlScriptExecutor>().As<ISqlScriptExecutor>().InstancePerLifetimeScope();
         }
     }

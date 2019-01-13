@@ -7,10 +7,10 @@ GO
 -- =============================================
 -- Author:		PB
 -- Create date: 01.01.2019
--- Description:	Procedure gets an api resource by name
+-- Description:	Procedure gets identity resources by names
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetApiResourceByName]
-	@apiResourceName nvarchar(50)
+CREATE PROCEDURE [dbo].[PR_Resource_GetIdentityResourcesByNames]
+	@identityResourcesNames StringList READONLY
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -22,11 +22,10 @@ BEGIN
 		[CreatorId],
 		[CreateDate],
 		[UpdateDate],
-		[ApiGuid],
 		[Name],
 		[Description],
-		[InstanceId]
-	FROM [dbo].[ApiResource]
-	WHERE [Name] = @apiResourceName
+		[ShowInDiscoveryDocument]
+	FROM [dbo].[IdentityResource] resources
+	INNER JOIN @identityResourcesNames list ON resources.Name = list.Value
 END
 GO

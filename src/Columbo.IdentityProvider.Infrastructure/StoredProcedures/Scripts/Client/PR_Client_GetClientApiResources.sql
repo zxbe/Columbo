@@ -9,7 +9,7 @@ GO
 -- Create date: 05.01.2019
 -- Description:	Procedure gets api resources of a client
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetClientApiResources]
+CREATE PROCEDURE [dbo].[PR_Client_GetClientApiResources]
 	@clientId int
 AS
 BEGIN

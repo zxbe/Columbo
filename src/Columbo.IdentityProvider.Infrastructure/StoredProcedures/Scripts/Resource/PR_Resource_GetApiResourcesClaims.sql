@@ -9,7 +9,7 @@ GO
 -- Create date: 11.01.2019
 -- Description:	Procedure gets claims of recources
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetApiResourcesClaims]
+CREATE PROCEDURE [dbo].[PR_Resource_GetApiResourcesClaims]
 	@apiResourcesId IntList READONLY
 AS
 BEGIN

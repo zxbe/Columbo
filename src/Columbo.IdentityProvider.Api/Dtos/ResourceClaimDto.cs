@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Columbo.IdentityProvider.Api.Dtos
 {
-    public class ResourceClaim
+    public class ResourceClaimDto
     {
         public int ResourceId { get; set; }
         public string ClaimType { get; set; }

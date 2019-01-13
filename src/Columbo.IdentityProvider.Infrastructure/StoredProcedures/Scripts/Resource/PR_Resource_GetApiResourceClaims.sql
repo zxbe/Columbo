@@ -9,7 +9,7 @@ GO
 -- Create date: 05.01.2019
 -- Description:	Procedure gets claims of an api resource
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetApiResourceClaims]
+CREATE PROCEDURE [dbo].[PR_Resource_GetApiResourceClaims]
 	@apiResourceId int
 AS
 BEGIN

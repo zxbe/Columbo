@@ -16,9 +16,9 @@ namespace Columbo.IdentityProvider.Api.Stores
 {
     public class ClientStore : IClientStore
     {
-        private readonly IStoredProcedureExecutor<StoredProcedureEnum> _storedProcedureExecutor;
+        private readonly IStoredProcedureExecutor _storedProcedureExecutor;
 
-        public ClientStore(IStoredProcedureExecutor<StoredProcedureEnum> storedProcedureExecutor)
+        public ClientStore(IStoredProcedureExecutor storedProcedureExecutor)
         {
             _storedProcedureExecutor = storedProcedureExecutor;
         }
@@ -27,12 +27,16 @@ namespace Columbo.IdentityProvider.Api.Stores
         {
             var clientGuid = new Guid(clientId);
             
-            var client = _storedProcedureExecutor.ExecuteSingle<ClientDto>(AsParameter(clientGuid, "clientGuid"), StoredProcedureEnum.GetClientByGuid);
+            var client = _storedProcedureExecutor
+                .ExecuteSingle<ClientDto>(AsParameter(clientGuid, "clientGuid"), ClientStoredProcedureEnum.GetClientByGuid);
 
             var clientIdParameter = AsParameter(client.Id, "clientId");
 
-            var clientIdentityResources = _storedProcedureExecutor.Execute<IdentityResourceDto>(clientIdParameter, StoredProcedureEnum.GetClientIdentityResources);
-            var clientApiResources = _storedProcedureExecutor.Execute<ApiResourceDto>(clientIdParameter, StoredProcedureEnum.GetClientApiResources);
+            var clientIdentityResources = _storedProcedureExecutor
+                .Execute<IdentityResourceDto>(clientIdParameter, ClientStoredProcedureEnum.GetClientIdentityResources);
+
+            var clientApiResources = _storedProcedureExecutor
+                .Execute<ApiResourceDto>(clientIdParameter, ClientStoredProcedureEnum.GetClientApiResources);
 
             client.IdentityResources = clientIdentityResources.ToList();
             client.ApiResources = clientApiResources.ToList();

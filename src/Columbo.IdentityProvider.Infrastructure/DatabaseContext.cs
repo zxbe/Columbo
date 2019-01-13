@@ -10,6 +10,7 @@ using Columbo.Shared.Infrastructure.Extensions;
 using System.IO;
 using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
 using Columbo.Shared.Infrastructure.Helpers;
+using System.Collections.Generic;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
@@ -48,8 +49,14 @@ namespace Columbo.IdentityProvider.Infrastructure
         private void CreateStoredProcedures()
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var sqlScriptInfoList = EnumExtension.GetSqlScriptInfoList<StoredProcedureEnum>();
-            
+
+            var sqlClientScriptInfoList = EnumExtension.GetSqlScriptInfoList<ClientStoredProcedureEnum>();
+            var sqlResourceScriptInfoList = EnumExtension.GetSqlScriptInfoList<ResourceStoredProcedureEnum>();
+
+            var sqlScriptInfoList = new List<SqlScriptInfo>();
+            sqlScriptInfoList.AddRange(sqlClientScriptInfoList);
+            sqlScriptInfoList.AddRange(sqlResourceScriptInfoList);
+
             foreach (var sqlScriptInfo in sqlScriptInfoList)
             {                
                 if (!SqlHelper.CheckIfStoredProcedureExists(Database.GetDbConnection(), sqlScriptInfo.Name))

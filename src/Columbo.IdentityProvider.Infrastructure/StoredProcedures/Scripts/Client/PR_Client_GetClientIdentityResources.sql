@@ -9,7 +9,7 @@ GO
 -- Create date: 05.01.2019
 -- Description:	Procedure gets identity resources of a client
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetClientIdentityResources]
+CREATE PROCEDURE [dbo].[PR_Client_GetClientIdentityResources]
 	@clientId int
 AS
 BEGIN

@@ -11,7 +11,7 @@ using static Dapper.SqlMapper;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
-    public class StoredProcedureExecutor : IStoredProcedureExecutor<StoredProcedureEnum>
+    public class StoredProcedureExecutor : IStoredProcedureExecutor
     {
         private readonly ISqlConnectionFactory _sqlConnectionFactory;
 
@@ -20,7 +20,7 @@ namespace Columbo.IdentityProvider.Infrastructure
             _sqlConnectionFactory = sqlConnectionFactory;
         }
 
-        public IEnumerable<T> Execute<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public IEnumerable<T> Execute<T>(IDynamicParameters parameters, Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
@@ -29,7 +29,7 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public IEnumerable<T> Execute<T>(StoredProcedureEnum storedProcedureEnum)
+        public IEnumerable<T> Execute<T>(Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
@@ -38,7 +38,7 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public T ExecuteSingle<T>(IDynamicParameters parameters, StoredProcedureEnum storedProcedureEnum)
+        public T ExecuteSingle<T>(IDynamicParameters parameters, Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {

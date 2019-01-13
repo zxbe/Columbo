@@ -9,7 +9,7 @@ GO
 -- Create date: 01.01.2019
 -- Description:	Procedure gets all identity resources
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetAllIdentityResources]
+CREATE PROCEDURE [dbo].[PR_Resource_GetAllIdentityResources]
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

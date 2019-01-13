@@ -6,10 +6,10 @@ using static Dapper.SqlMapper;
 
 namespace Columbo.Shared.Infrastructure
 {
-    public interface IStoredProcedureExecutor<TEnum> where TEnum : struct // todo where TEnum : Enum
+    public interface IStoredProcedureExecutor
     {
-        IEnumerable<T> Execute<T>(IDynamicParameters parameters, TEnum storedProcedureEnum);
-        IEnumerable<T> Execute<T>(TEnum storedProcedureEnum);
-        T ExecuteSingle<T>(IDynamicParameters parameters, TEnum storedProcedureEnum);
+        IEnumerable<T> Execute<T>(IDynamicParameters parameters, Enum storedProcedureEnum);
+        IEnumerable<T> Execute<T>(Enum storedProcedureEnum);
+        T ExecuteSingle<T>(IDynamicParameters parameters, Enum storedProcedureEnum);
     }
 }

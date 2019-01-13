@@ -7,10 +7,9 @@ GO
 -- =============================================
 -- Author:		PB
 -- Create date: 01.01.2019
--- Description:	Procedure gets a client by guid
+-- Description:	Procedure gets all api resources
 -- =============================================
-CREATE PROCEDURE [dbo].[PR_GetClientByGuid]
-	@clientGuid uniqueidentifier
+CREATE PROCEDURE [dbo].[PR_Resource_GetAllApiResources]
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -22,16 +21,10 @@ BEGIN
 		[CreatorId],
 		[CreateDate],
 		[UpdateDate],
-		[Version],
-		[ClientGuid],
-		[SecretHash],
-		[RedirectUri],
-		[PostLogoutRedirectUri],
-		[IdentityTokenLifetime],
-		[AccessTokenLifetime],
-		[SequrityCodeLifetiem],
-		[IsActive]
-	FROM [dbo].[Client]
-	WHERE [ClientGuid] = @clientGuid AND [IsActive] = 1
+		[ApiGuid],
+		[Name],
+		[Description],
+		[InstanceId]
+	FROM [dbo].[ApiResource]
 END
 GO
