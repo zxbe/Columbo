@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Columbo.IdentityProvider.Api
+namespace Columbo.IdentityProvider.Sts
 {
     public class Startup
     {
@@ -33,8 +33,8 @@ namespace Columbo.IdentityProvider.Api
 
             builder.Populate(services);
             builder.Register(c => Configuration).As<IConfiguration>().SingleInstance();
-            builder.RegisterModule<Columbo.IdentityProvider.Api.Container.ContainerModule>();
             builder.RegisterModule<Columbo.IdentityProvider.Infrastructure.Container.ContainerModule>();
+            builder.RegisterModule<Columbo.IdentityProvider.Sts.Container.ContainerModule>();
 
             ApplicationContainer = builder.Build();
 

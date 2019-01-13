@@ -6,15 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
-    <PackageReference Include="identityserver4" Version="2.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Columbo.IdentityProvider.Infrastructure\Columbo.IdentityProvider.Infrastructure.csproj" />
-    <ProjectReference Include="..\Columbo.Shared.Api\Columbo.Shared.Api.csproj" />
+    <ProjectReference Include="..\Columbo.IdentityProvider.Api\Columbo.IdentityProvider.Api.csproj" />
   </ItemGroup>
 
 </Project>

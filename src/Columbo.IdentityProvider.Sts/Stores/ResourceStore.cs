@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static Columbo.Shared.Infrastructure.Helpers.DynamicParameterHelper;
 
-namespace Columbo.IdentityProvider.Api.Stores
+namespace Columbo.IdentityProvider.Sts.Stores
 {
     public class ResourceStore : IResourceStore
     {

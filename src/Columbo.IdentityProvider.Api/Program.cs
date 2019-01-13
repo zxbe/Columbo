@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Columbo.IdentityProvider.Api.Settings;
+using Columbo.Shared.Infrastructure;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Autofac.Extensions.DependencyInjection;
-using Columbo.Shared.Infrastructure;
-using Columbo.IdentityProvider.Api.Settings;
 using Microsoft.Extensions.DependencyInjection;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Columbo.Shared.Api.Extensions;
 
 namespace Columbo.IdentityProvider.Api
@@ -52,7 +52,7 @@ namespace Columbo.IdentityProvider.Api
                     IHostingEnvironment env = builderContext.HostingEnvironment;
 
                     config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                        //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                    //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
                 })
                 .UseStartup<Startup>();
     }
