@@ -9,6 +9,8 @@ namespace Columbo.IdentityProvider.Api.Dtos
     public class ClientDto : ManagedBaseDto
     {
         public Guid ClientGuid { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public string SecretHash { get; set; }
         public string RedirectUri { get; set; }
         public string PostLogoutRedirectUri { get; set; }

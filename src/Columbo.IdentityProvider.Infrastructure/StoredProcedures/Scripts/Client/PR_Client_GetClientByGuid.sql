@@ -24,6 +24,8 @@ BEGIN
 		[UpdateDate],
 		[Version],
 		[ClientGuid],
+		[Name],
+		[Description],
 		[SecretHash],
 		[RedirectUri],
 		[PostLogoutRedirectUri],

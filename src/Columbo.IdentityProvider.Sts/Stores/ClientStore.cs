@@ -40,17 +40,23 @@ namespace Columbo.IdentityProvider.Sts.Stores
 
             client.IdentityResources = clientIdentityResources.ToList();
             client.ApiResources = clientApiResources.ToList();
-            
+
+            var scopes = new List<string>(client
+                    .ApiResources.Select(x => x.Name)
+                    .Union(client.IdentityResources.Select(x => x.Name)));
+
+            scopes.Add("openid");
+
             var identityServerClient = new Client
             {
                 ClientId = client.ClientGuid.ToString(),
+                ClientName = client.Name,
+                Description = client.Description,
                 IdentityTokenLifetime = client.IdentityTokenLifetime,
                 AccessTokenLifetime = client.AccessTokenLifetime,
-                AllowedGrantTypes = GrantTypes.Hybrid,
-                AllowedScopes = new List<string>(client
-                    .ApiResources.Select(x => x.Name)
-                    .Union(client.IdentityResources.Select(x => x.Name))),
-                ClientSecrets = new List<Secret>()
+                AllowedGrantTypes = GrantTypes.Implicit,
+                AllowedScopes = scopes,
+            ClientSecrets = new List<Secret>()
                 {
                     new Secret(client.SecretHash)
                 },

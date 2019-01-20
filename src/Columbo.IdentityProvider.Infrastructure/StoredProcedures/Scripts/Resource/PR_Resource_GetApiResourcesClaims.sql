@@ -18,8 +18,8 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT 
-		apiResourceClaim.ApiResourceId,
-		claim.Type
+		apiResourceClaim.ApiResourceId ResourceId,
+		claim.Type ClaimType
 	FROM [dbo].[ApiResourceClaim] apiResourceClaim
 	INNER JOIN [dbo].[ClaimType] claim ON apiResourceClaim.ClaimTypeId = claim.Id
 	INNER JOIN @apiResourcesId list ON apiResourceClaim.ApiResourceId = list.Value

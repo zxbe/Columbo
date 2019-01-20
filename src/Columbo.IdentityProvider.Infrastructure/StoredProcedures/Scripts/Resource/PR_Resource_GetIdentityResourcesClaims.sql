@@ -18,8 +18,8 @@ BEGIN
 	SET NOCOUNT ON;
 	
 	SELECT
-		identityResourceClaim.IdentityResourceId,
-		claim.Type
+		identityResourceClaim.IdentityResourceId ResourceId,
+		claim.Type ClaimType
 	FROM [dbo].[IdentityResourceClaim] identityResourceClaim
 	INNER JOIN [dbo].[ClaimType] claim ON identityResourceClaim.ClaimTypeId = claim.Id
 	INNER JOIN @identityResourcesId list ON identityResourceClaim.IdentityResourceId = list.Value

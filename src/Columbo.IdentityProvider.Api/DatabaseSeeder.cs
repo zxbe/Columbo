@@ -16,7 +16,11 @@ namespace Columbo.IdentityProvider.Api
     {
         public void Seed(IDatabaseContext context)
         {
+            //todo change seeder
+
             SeedClaim(context);
+            var resource = SeedIdentityResource(context);
+            SeedClient(context, resource.Id);
             SeedDeviceType(context);
             var instance = SeedInstance(context);
             var role = SeedSequrity(context);
@@ -58,7 +62,7 @@ namespace Columbo.IdentityProvider.Api
                     context.Attach(roleTypeEntity).State = EntityState.Added;
                 }
             }
-            
+
             var roleEntity = new Role(1, "System administrator", null, (int)RoleTypeEnum.Administrator);
             roleEntity.AddPermissions(new List<int>()
             {
@@ -117,8 +121,9 @@ namespace Columbo.IdentityProvider.Api
         private void SeedClaim(IDatabaseContext context)
         {
             var existingClaims = context.Set<ClaimType>().ToList();
+            var claimTypes = ClaimTypes.GetClaimTypes();
 
-            foreach (var claimType in ClaimTypes.GetClaimTypes())
+            foreach (var claimType in claimTypes)
             {
                 if (!existingClaims.Any(x => x.Name == claimType.Key))
                 {
@@ -128,6 +133,46 @@ namespace Columbo.IdentityProvider.Api
             }
 
             context.SaveChanges();
+        }
+
+        private IdentityResource SeedIdentityResource(IDatabaseContext context)
+        {
+            var existingIdentityResources = context.Set<IdentityResource>().ToList();
+
+            var claims = context.Set<ClaimType>().ToList();
+
+            var userIdentityResource = new IdentityResource(1, "UserIdentityResource", "-");
+            userIdentityResource.AddClaims(claims, 1);
+
+            if (!existingIdentityResources.Any(x => x.Name.Equals(userIdentityResource.Name)))
+            {
+                context.Attach(userIdentityResource).State = EntityState.Added;
+                context.SaveChanges();
+                return userIdentityResource;
+            }
+            else
+                return existingIdentityResources.First(x => x.Name.Equals(userIdentityResource.Name));
+        }
+
+        private void SeedClient(IDatabaseContext context, int identityResourceId)
+        {
+            var existingCliens = context.Set<Client>().ToList();
+
+            var client = new Client(1,
+                new Guid("e6af38ec-9750-49c9-8351-c89e7386b1e7"),
+                "mvc",
+                "mvc test",
+                "test".Sha256(),
+                new Uri("http://localhost:49895/signin-oidc"),
+                new Uri("http://localhost:49895"), 600, 600, 600);
+
+            client.AddIdentityResources(new List<int> { identityResourceId }, 1);
+
+            if (!existingCliens.Any(x => x.ClientGuid == client.ClientGuid))
+            {
+                context.Attach(client).State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -21,6 +21,11 @@ namespace Columbo.IdentityProvider.Sts.Stores
             _storedProcedureExecutor = storedProcedureExecutor;
         }
 
+        private void AddRequiredIdentityResources(List<IdentityResource> identityResources)
+        {
+            identityResources.Add(new IdentityResources.OpenId());
+        }
+
         public Task<ApiResource> FindApiResourceAsync(string name)
         {
             var apiResource = _storedProcedureExecutor
@@ -98,7 +103,10 @@ namespace Columbo.IdentityProvider.Sts.Stores
                     Description = identityResource.Description,
                     UserClaims = identityResource.ClaimTypes
                 };
+
+                identityServerIdentityResources.Add(identityServerIdentityResource);
             }
+            AddRequiredIdentityResources(identityServerIdentityResources);
 
             return Task.FromResult(identityServerIdentityResources.AsEnumerable());
         }
@@ -151,9 +159,14 @@ namespace Columbo.IdentityProvider.Sts.Stores
                     Name = identityResource.Name,
                     DisplayName = identityResource.Name,
                     Description = identityResource.Description,
-                    UserClaims = identityResource.ClaimTypes
+                    UserClaims = identityResource.ClaimTypes,
+                    ShowInDiscoveryDocument = identityResource.ShowInDiscoveryDocument
                 };
+
+                identityServerIdentityResources.Add(identityServerIdentityResource);
             }
+
+            AddRequiredIdentityResources(identityServerIdentityResources);
 
             var resources = new Resources(identityServerIdentityResources.AsEnumerable(), identityServerApiResources.AsEnumerable());
 

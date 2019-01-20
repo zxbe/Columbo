@@ -17,6 +17,8 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
             builder.ToTable("Client");
 
             builder.Property(x => x.ClientGuid);
+            builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Description).HasMaxLength(500);
             builder.Property(x => x.SecretHash).HasMaxLength(64).IsRequired();
             builder.Property(x => x.RedirectUri).HasConversion<string>(x => x.AbsoluteUri, y => new Uri(y)).HasMaxLength(50).IsRequired();
             builder.Property(x => x.PostLogoutRedirectUri).HasConversion<string>(x => x.AbsoluteUri, y => new Uri(y)).HasMaxLength(50).IsRequired();

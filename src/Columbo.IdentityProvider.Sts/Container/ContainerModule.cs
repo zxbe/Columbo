@@ -10,6 +10,7 @@ namespace Columbo.IdentityProvider.Sts.Container
     {
         protected override void Load(ContainerBuilder builder)
         {
+            
         }
     }
 }

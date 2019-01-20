@@ -29,5 +29,10 @@ namespace Columbo.IdentityProvider.Core.Domain
             IdentityResourceClaims = new List<IdentityResourceClaim>();
             ClientIdentityResources = new List<ClientIdentityResource>();
         }
+
+        public void AddClaims(List<ClaimType> claims, int creatorId)
+        {
+            claims.ForEach(x => IdentityResourceClaims.Add(new IdentityResourceClaim(creatorId, this.Id, x.Id)));
+        }
     }
 }

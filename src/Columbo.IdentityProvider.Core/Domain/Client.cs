@@ -8,6 +8,8 @@ namespace Columbo.IdentityProvider.Core.Domain
     public class Client : AggregateRoot
     {
         public Guid ClientGuid { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
         public string SecretHash { get; private set; }
         public Uri RedirectUri { get; private set; }
         public Uri PostLogoutRedirectUri { get; private set; }
@@ -28,6 +30,9 @@ namespace Columbo.IdentityProvider.Core.Domain
 
         public Client(
             int creatorId, 
+            Guid clientGuid,
+            string name,
+            string description,
             string secretHash, 
             Uri redirectUri, 
             Uri postLogoutRedirectUri,
@@ -36,7 +41,9 @@ namespace Columbo.IdentityProvider.Core.Domain
             int sequrityCodeLifetime)
             : base(creatorId)
         {
-            ClientGuid = new Guid();
+            ClientGuid = clientGuid;
+            Name = name;
+            Description = description;
             SecretHash = secretHash;
             RedirectUri = redirectUri;
             PostLogoutRedirectUri = postLogoutRedirectUri;
@@ -48,6 +55,11 @@ namespace Columbo.IdentityProvider.Core.Domain
             ClientApiResources = new List<ClientApiResource>();
             ClientIdentityResources = new List<ClientIdentityResource>();
             SequrityCodes = new List<SequrityCode>();
+        }
+
+        public void AddIdentityResources(List<int> identityResourcesId, int creatorId)
+        {
+            identityResourcesId.ForEach(x => ClientIdentityResources.Add(new ClientIdentityResource(1, this.Id, x)));
         }
     }
 }
