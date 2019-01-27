@@ -38,6 +38,15 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
+        public IEnumerable<TFirs> Execute<TFirs, TSecond>(IDynamicParameters parameters, Func<TFirs, TSecond, TFirs> map, Enum storedProcedureEnum)
+        {
+            using (var sqlConnection = _sqlConnectionFactory.Create())
+            {
+                var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
+                return sqlConnection.Query(procedureName, map, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public T ExecuteSingle<T>(IDynamicParameters parameters, Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
