@@ -55,7 +55,7 @@ namespace Columbo.Shared.Api.Security.Helpers
                 return attribute.Target;
             });
 
-            foreach(var group in groups)
+            foreach (var group in groups)
             {
                 groupedProperties.Add(group.Key, group.ToList());
             }
@@ -66,60 +66,51 @@ namespace Columbo.Shared.Api.Security.Helpers
         public static IEnumerable<Claim> GetClaimsFromObject<T>(T @object)
         {
             var claims = new List<Claim>();
-            var propertiesWithClaimTypeAssignAttribute = new List<PropertyInfo>();
 
             if (@object == null)
                 return claims;
 
             var propertyInfos = @object.GetType().GetProperties();
 
-            propertiesWithClaimTypeAssignAttribute.AddRange(propertyInfos.Where(x => x.GetCustomAttributes(typeof(ClaimTypeAttribute), false).Any()));
-            var groupedProperties = GroupPropertiesByTarget(propertiesWithClaimTypeAssignAttribute);
+            var propertiesWithClaimTypeAttribute = propertyInfos.Where(x => x.GetCustomAttributes(typeof(ClaimTypeAttribute), false).Any());
+            var groupedProperties = GroupPropertiesByTarget(propertiesWithClaimTypeAttribute);
 
-            while (propertiesWithClaimTypeAssignAttribute.Any())
+            if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.BuiltIn))
             {
-                if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.BuiltIn))
+                groupedProperties[ClaimTypeTargetEnum.BuiltIn].ForEach(x =>
                 {
-                    groupedProperties[ClaimTypeTargetEnum.BuiltIn].ForEach(x =>
-                    {
-                        propertiesWithClaimTypeAssignAttribute.Remove(x);
-                        claims.AddRange(GetClaimsFromProperty(x, @object));
-                    });
-                }
+                    claims.AddRange(GetClaimsFromProperty(x, @object));
+                });
+            }
 
-                if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.Collection))
+            if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.Collection))
+            {
+                groupedProperties[ClaimTypeTargetEnum.Collection].ForEach(x =>
                 {
-                    groupedProperties[ClaimTypeTargetEnum.Collection].ForEach(x =>
+                    var collection = (ICollection)x.GetValue(@object);
+
+                    foreach (var sourceObject in collection)
                     {
-                        propertiesWithClaimTypeAssignAttribute.Remove(x);
-                        var collection = (ICollection)x.GetValue(@object);
-
-                        foreach (var sourceObject in collection)
-                        {
-                            claims.AddRange(GetClaimsFromObject(sourceObject));
-                        }
-                    });
-                }
-
-                if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.Complex))
-                {
-                    groupedProperties[ClaimTypeTargetEnum.Complex].ForEach(x =>
-                    {
-                        propertiesWithClaimTypeAssignAttribute.Remove(x);
-                        var sourceObject = x.GetValue(@object);
-
                         claims.AddRange(GetClaimsFromObject(sourceObject));
-                    });
-                }
+                    }
+                });
+            }
 
-                if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.EnumCollection))
+            if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.Complex))
+            {
+                groupedProperties[ClaimTypeTargetEnum.Complex].ForEach(x =>
                 {
-                    groupedProperties[ClaimTypeTargetEnum.EnumCollection].ForEach(x =>
-                    {
-                        propertiesWithClaimTypeAssignAttribute.Remove(x);
-                        claims.AddRange(GetClaimsFromProperty(x, @object));
-                    });
-                }
+                    var sourceObject = x.GetValue(@object);
+                    claims.AddRange(GetClaimsFromObject(sourceObject));
+                });
+            }
+
+            if (groupedProperties.ContainsKey(ClaimTypeTargetEnum.EnumCollection))
+            {
+                groupedProperties[ClaimTypeTargetEnum.EnumCollection].ForEach(x =>
+                {
+                    claims.AddRange(GetClaimsFromProperty(x, @object));
+                });
             }
 
             return claims;
