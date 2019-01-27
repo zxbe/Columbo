@@ -56,6 +56,7 @@ namespace Columbo.IdentityProvider.Sts.Stores
                 AccessTokenLifetime = client.AccessTokenLifetime,
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowedScopes = scopes,
+                RequireConsent = false,
             ClientSecrets = new List<Secret>()
                 {
                     new Secret(client.SecretHash)

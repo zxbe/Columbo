@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Autofac.Extensions.DependencyInjection;
+using Columbo.Shared.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Columbo.IdentityProvider.Sts
 {
@@ -15,7 +17,29 @@ namespace Columbo.IdentityProvider.Sts
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            InitializeDatabase(host);
+
+            host.Run();
+        }
+
+        private static void InitializeDatabase(IWebHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var databaseContext = services.GetRequiredService<IDatabaseContext>();
+                    var configuration = services.GetRequiredService<IConfiguration>();
+                    databaseContext.InitializeDatabase(null, false);
+                }
+                catch (Exception e)
+                {
+                    //todo log
+                }
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
