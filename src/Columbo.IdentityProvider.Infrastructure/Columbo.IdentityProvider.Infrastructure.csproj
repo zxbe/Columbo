@@ -16,6 +16,10 @@
     <None Remove="StoredProcedures\Scripts\PR_Resource_GetApiResourcesClaims.sql" />
     <None Remove="StoredProcedures\Scripts\PR_Resource_GetIdentityResourcesByNames.sql" />
     <None Remove="StoredProcedures\Scripts\PR_Resource_GetIdentityResourcesClaims.sql" />
+    <None Remove="StoredProcedures\Scripts\User\PR_User_GetPermissionsByRolesId.sql" />
+    <None Remove="StoredProcedures\Scripts\User\PR_User_GetUserIdentityById.sql" />
+    <None Remove="StoredProcedures\Scripts\User\PR_User_GetUserIdentityRoles.sql" />
+    <None Remove="StoredProcedures\Scripts\User\PR_User_IsUserIdentityActive.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +34,10 @@
     <EmbeddedResource Include="StoredProcedures\Scripts\Client\PR_Client_GetClientIdentityResources.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\Resource\PR_Resource_GetIdentityResourcesByNames.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\Resource\PR_Resource_GetIdentityResourcesClaims.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_GetPermissionsByRolesId.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_GetUserIdentityRoles.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_GetUserIdentityById.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_IsUserIdentityActive.sql" />
   </ItemGroup>
 
   <ItemGroup>

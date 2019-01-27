@@ -52,10 +52,12 @@ namespace Columbo.IdentityProvider.Infrastructure
 
             var sqlClientScriptInfoList = EnumExtension.GetSqlScriptInfoList<ClientStoredProcedureEnum>();
             var sqlResourceScriptInfoList = EnumExtension.GetSqlScriptInfoList<ResourceStoredProcedureEnum>();
+            var sqlUserScriptInfoList = EnumExtension.GetSqlScriptInfoList<UserStoredProcedureEnum>();
 
             var sqlScriptInfoList = new List<SqlScriptInfo>();
             sqlScriptInfoList.AddRange(sqlClientScriptInfoList);
             sqlScriptInfoList.AddRange(sqlResourceScriptInfoList);
+            sqlScriptInfoList.AddRange(sqlUserScriptInfoList);
 
             foreach (var sqlScriptInfo in sqlScriptInfoList)
             {                
