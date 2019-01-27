@@ -163,8 +163,8 @@ namespace Columbo.IdentityProvider.Api
                 "mvc",
                 "mvc test",
                 "test".Sha256(),
-                new Uri("http://localhost:49895/signin-oidc"),
-                new Uri("http://localhost:49895"), 600, 600, 600);
+                new Uri("http://localhost:55128/signin-oidc"),
+                new Uri("http://localhost:55128"), 600, 600, 600);
 
             client.AddIdentityResources(new List<int> { identityResourceId }, 1);
 

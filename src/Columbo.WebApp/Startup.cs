@@ -47,7 +47,7 @@ namespace Columbo.WebApp
                 .AddCookie("Columbo.AuthenticationHandlers.Cookies")
                 .AddOpenIdConnect("Columbo.AuthenticationHandlers.Oidc", options =>
                 {
-                    options.Authority = "http://localhost:5000";
+                    options.Authority = "http://localhost:55132";
                     options.RequireHttpsMetadata = false;
                     options.ClientId = "e6af38ec-9750-49c9-8351-c89e7386b1e7";
                     options.SaveTokens = true;
