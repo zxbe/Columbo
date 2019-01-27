@@ -1,4 +1,5 @@
 ﻿using Columbo.Shared.Api.Attributes;
+using Columbo.Shared.Api.Security.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;

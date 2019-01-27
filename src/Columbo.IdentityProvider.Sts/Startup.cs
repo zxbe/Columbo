@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Columbo.IdentityProvider.Sts.Extensions;
+using Columbo.IdentityProvider.Sts.Services;
 using Columbo.IdentityProvider.Sts.Stores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,9 +39,10 @@ namespace Columbo.IdentityProvider.Sts
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddIdentityServer()
-                .AddSigningCredential("CN=Columbo.IdentityProvider.Sts")
+                .AddCertificate()
                 .AddClientStore<ClientStore>()
-                .AddResourceStore<ResourceStore>();
+                .AddResourceStore<ResourceStore>()
+                .AddProfileService<ProfileService>();
 
             var builder = new ContainerBuilder();
 

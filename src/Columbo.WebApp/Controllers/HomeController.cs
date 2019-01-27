@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Columbo.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Columbo.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -20,6 +20,14 @@ namespace Columbo.WebApp.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Login()
+        {
+            return Challenge(new AuthenticationProperties
+            {
+                RedirectUri = "/Home/Index"
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

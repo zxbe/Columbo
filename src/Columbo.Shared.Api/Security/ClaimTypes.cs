@@ -1,30 +1,33 @@
-﻿using System;
+﻿using Columbo.Shared.Api.Security.Attributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 
 namespace Columbo.Shared.Api.Security
 {
     public static class ClaimTypes
     {
-        public static string UserId => "http://schemas.columbo.com/identity/claims/userId";
-        public static string Login => "http://schemas.columbo.com/identity/claims/login";
-        public static string Name => "http://schemas.columbo.com/identity/claims/name";
-        public static string Surname => "http://schemas.columbo.com/identity/claims/surname";
-        public static string EmailAddress => "http://schemas.columbo.com/identity/claims/emailAddress";
-        public static string RoleType => "http://schemas.columbo.com/identity/claims/roleType";
-        public static string RoleId => "http://schemas.columbo.com/identity/claims/roleId";
-        public static string Permission => "http://schemas.columbo.com/identity/claims/permission";
+        public const string UserIdentityId = "http://schemas.columbo.com/identity/claims/userIdentityId";
+        public const string Login = "http://schemas.columbo.com/identity/claims/login";
+        public const string Name = "http://schemas.columbo.com/identity/claims/name";
+        public const string Surname = "http://schemas.columbo.com/identity/claims/surname";
+        public const string EmailAddress = "http://schemas.columbo.com/identity/claims/emailAddress";
+        public const string RoleTypeId = "http://schemas.columbo.com/identity/claims/roleTypeId";
+        public const string PermissionId = "http://schemas.columbo.com/identity/claims/permissionId";
 
         public static Dictionary<string, string> GetClaimTypes()
         {
             var claimTypes = new Dictionary<string, string>();
-            var properties = typeof(ClaimTypes).GetProperties();
+            var fields = typeof(ClaimTypes).GetFields().Where(x => x.IsStatic);
            
-            foreach (var property in properties)
+            foreach (var field in fields)
             {
-                string name = property.Name;
-                string value = (string)property.GetValue(null);
+                string name = field.Name;
+                string value = (string)field.GetValue(null);
 
                 claimTypes.Add(name, value);
             }
