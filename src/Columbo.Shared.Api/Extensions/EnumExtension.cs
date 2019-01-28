@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Columbo.Shared.Api.Extensions
 {
-    public class EnumField
+    public class EnumField //todo move to .cs file
     {
         public int Value { get; private set; }
         public string Name { get; private set; }

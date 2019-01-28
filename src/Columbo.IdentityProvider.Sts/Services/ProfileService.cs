@@ -17,32 +17,11 @@ namespace Columbo.IdentityProvider.Sts.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly IStoredProcedureExecutor _storedProcedureExecutor;
+        private readonly IUserIdentityService _userIdentityService;
 
-        public ProfileService(IStoredProcedureExecutor storedProcedureExecutor)
+        public ProfileService(IUserIdentityService userIdentityService)
         {
-            _storedProcedureExecutor = storedProcedureExecutor;
-        }
-
-        private UserIdentityDto GetUserIdentity(int userIdentityId) // todo move to UserIdentityService
-        {
-            var userIdentityIdParameter = AsParameter(userIdentityId, "userIdentityId");
-            var userIdentity = _storedProcedureExecutor.Execute<UserIdentityDto, UserDto>(userIdentityIdParameter, (ui, u) =>
-            {
-                ui.User = u;
-                return ui;
-            }, UserStoredProcedureEnum.GetUserIdentityById).First();
-
-            var roles = _storedProcedureExecutor.Execute<RoleDto>(userIdentityIdParameter, UserStoredProcedureEnum.GetUserIdentityRoles).ToList();
-
-            var rolesIdParameter = new IntList(roles.Select(x => x.Id).ToList()).AsTableValuedParameter("rolesId");
-            var permissions = _storedProcedureExecutor.Execute<RolePermissionDto>(rolesIdParameter, UserStoredProcedureEnum.GetPermissionsByRolesId);
-
-            roles.ForEach(x => x.Permissions = permissions.Where(y => y.RoleId == x.Id).Select(y => y.Permission).ToList());
-
-            userIdentity.Roles = roles;
-
-            return userIdentity;
+            _userIdentityService = userIdentityService;
         }
 
         public Task GetProfileDataAsync(ProfileDataRequestContext context)
@@ -54,11 +33,13 @@ namespace Columbo.IdentityProvider.Sts.Services
             if (sub == null)
                 throw new Exception(); //todo exception
 
-            var userIdentity = GetUserIdentity(int.Parse(sub.Value));
+            var userIdentity = _userIdentityService.GetUserIdentity(int.Parse(sub.Value));
 
-            var claims = ClaimTypeHelper.GetClaimsFromObject(userIdentity);
+            var claims = ClaimTypeHelper.GetRequiredClaimsFromObject(userIdentity, context.RequestedClaimTypes.ToList());
 
-            throw new NotImplementedException();
+            context.IssuedClaims.AddRange(claims.ToList());
+
+            return Task.CompletedTask;
         }
 
         public Task IsActiveAsync(IsActiveContext context)
@@ -74,11 +55,10 @@ namespace Columbo.IdentityProvider.Sts.Services
                 context.IsActive = false;
                 return Task.FromResult(context);
             }
-            
-            var userIdentityId = AsParameter(int.Parse(sub.Value), "userIdentityId");
-            context.IsActive = _storedProcedureExecutor.ExecuteSingle<bool>(userIdentityId, UserStoredProcedureEnum.IsUserIdentityActive);
 
-            return Task.FromResult(context.IsActive);
+            context.IsActive = _userIdentityService.IsUserIdentityActive(int.Parse(sub.Value));
+
+            return Task.CompletedTask;
         }
     }
 }

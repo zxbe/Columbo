@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Columbo.IdentityProvider.Sts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Columbo.IdentityProvider.Sts.Container
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
+            builder.RegisterType<UserIdentityService>().As<IUserIdentityService>().InstancePerLifetimeScope();
         }
     }
 }

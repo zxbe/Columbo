@@ -19,10 +19,10 @@ namespace Columbo.Shared.Api.Security.Helpers
 
             if (propertyInfo.PropertyType.IsGenericType && typeof(ICollection<>).IsAssignableFrom(propertyInfo.PropertyType.GetGenericTypeDefinition()))
             {
-                var collection = (ICollection)propertyInfo.GetValue(valueSource);
+                var collection = (ICollection)propertyInfo.GetValue(valueSource); 
                 foreach (var @enum in collection)
                 {
-                    claims.Add(new Claim(attribute.ClaimType, ((int)@enum).ToString()));
+                    claims.Add(new Claim(attribute.ClaimType, ((int)@enum).ToString())); //todo remove boxing and unboxing
                 }
             }
             else
@@ -114,6 +114,13 @@ namespace Columbo.Shared.Api.Security.Helpers
             }
 
             return claims;
+        }
+
+        public static IEnumerable<Claim> GetRequiredClaimsFromObject<T>(T @object, List<string> requiredClaimTypes)
+        {
+            var claims = GetClaimsFromObject(@object);
+
+            return claims.Where(x => requiredClaimTypes.Contains(x.Type));
         }
     }
 }
