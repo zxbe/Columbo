@@ -10,7 +10,7 @@ namespace Columbo.Shared.Infrastructure
     {
         IEnumerable<T> Execute<T>(IDynamicParameters parameters, Enum storedProcedureEnum);
         IEnumerable<T> Execute<T>(Enum storedProcedureEnum);
-        IEnumerable<TFirs> Execute<TFirs, TSecond>(IDynamicParameters parameters, Func<TFirs, TSecond, TFirs> map, Enum storedProcedureEnum);
+        IEnumerable<TFirst> Execute<TFirst, TSecond>(IDynamicParameters parameters, Func<TFirst, TSecond, TFirst> map, Enum storedProcedureEnum);
         T ExecuteSingleOrDefault<T>(IDynamicParameters parameters, Enum storedProcedureEnum);
     }
 }

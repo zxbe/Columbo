@@ -38,7 +38,7 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public IEnumerable<TFirs> Execute<TFirs, TSecond>(IDynamicParameters parameters, Func<TFirs, TSecond, TFirs> map, Enum storedProcedureEnum)
+        public IEnumerable<TFirst> Execute<TFirst, TSecond>(IDynamicParameters parameters, Func<TFirst, TSecond, TFirst> map, Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
