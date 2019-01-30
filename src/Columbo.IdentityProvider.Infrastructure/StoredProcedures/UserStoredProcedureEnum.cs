@@ -17,6 +17,9 @@ namespace Columbo.IdentityProvider.Infrastructure.StoredProcedures
         GetUserIdentityRoles,
 
         [SqlScript("PR_User_GetPermissionsByRolesId.sql")]
-        GetPermissionsByRolesId
+        GetPermissionsByRolesId,
+
+        [SqlScript("PR_User_VerifyUserIdentity.sql")]
+        VerifyUserIdentity
     }
 }

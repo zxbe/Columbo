@@ -47,13 +47,13 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public T ExecuteSingle<T>(IDynamicParameters parameters, Enum storedProcedureEnum)
+        public T ExecuteSingleOrDefault<T>(IDynamicParameters parameters, Enum storedProcedureEnum)
         {
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
                 var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
-                return sqlConnection.QuerySingle<T>(procedureName, parameters, commandType: CommandType.StoredProcedure);
+                return sqlConnection.QuerySingleOrDefault<T>(procedureName, parameters, commandType: CommandType.StoredProcedure);
             }
-        }
+        }        
     }
 }

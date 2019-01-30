@@ -29,7 +29,10 @@ namespace Columbo.IdentityProvider.Sts.Stores
         public Task<ApiResource> FindApiResourceAsync(string name)
         {
             var apiResource = _storedProcedureExecutor
-                .ExecuteSingle<ApiResourceDto>(AsParameter(name, "apiResourceName"), ResourceStoredProcedureEnum.GetApiResourceByName);
+                .ExecuteSingleOrDefault<ApiResourceDto>(AsParameter(name, "apiResourceName"), ResourceStoredProcedureEnum.GetApiResourceByName);
+
+            if (apiResource == null)
+                throw new Exception(); //todo exception
 
             var claims = _storedProcedureExecutor
                 .Execute<string>(AsParameter(apiResource.Id, "apiResourceId"), ResourceStoredProcedureEnum.GetApiResourceClaims);

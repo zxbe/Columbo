@@ -18,7 +18,7 @@ namespace Columbo.IdentityProvider.Infrastructure.Mappings
 
             builder.Property(x => x.UserId);
             builder.Property(x => x.Login).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.PasswordHash).HasMaxLength(64).IsRequired();
+            builder.Property(x => x.PasswordHash).HasColumnType("char(44)").IsRequired();
             builder.Property(x => x.IsActive);
         }
     }

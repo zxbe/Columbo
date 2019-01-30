@@ -20,6 +20,7 @@
     <None Remove="StoredProcedures\Scripts\User\PR_User_GetUserIdentityById.sql" />
     <None Remove="StoredProcedures\Scripts\User\PR_User_GetUserIdentityRoles.sql" />
     <None Remove="StoredProcedures\Scripts\User\PR_User_IsUserIdentityActive.sql" />
+    <None Remove="StoredProcedures\Scripts\User\PR_User_VerifyUserIdentity.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,7 @@
     <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_GetUserIdentityRoles.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_GetUserIdentityById.sql" />
     <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_IsUserIdentityActive.sql" />
+    <EmbeddedResource Include="StoredProcedures\Scripts\User\PR_User_VerifyUserIdentity.sql" />
   </ItemGroup>
 
   <ItemGroup>

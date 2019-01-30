@@ -7,6 +7,8 @@ using Columbo.IdentityProvider.Infrastructure.StoredProcedures;
 using Columbo.Shared.Api.Security.Helpers;
 using Columbo.Shared.Infrastructure;
 using Columbo.Shared.Infrastructure.SqlTypes;
+using Dapper;
+using IdentityServer4.Models;
 using static Columbo.Shared.Infrastructure.Helpers.DynamicParameterHelper;
 
 namespace Columbo.IdentityProvider.Sts.Services
@@ -47,7 +49,17 @@ namespace Columbo.IdentityProvider.Sts.Services
         public bool IsUserIdentityActive(int id)
         {
             var userIdentityIdParameter = AsParameter(id, "userIdentityId");
-            return _storedProcedureExecutor.ExecuteSingle<bool>(userIdentityIdParameter, UserStoredProcedureEnum.IsUserIdentityActive);            
+            return _storedProcedureExecutor.ExecuteSingleOrDefault<bool>(userIdentityIdParameter, UserStoredProcedureEnum.IsUserIdentityActive);            
+        }
+
+        public int? VerifyUserIdentity(string login, string password)
+        {
+            var passwordHash = password.Sha256();
+
+            var parameters = new DynamicParameters();
+            parameters.AddDynamicParams(new { login = login, passwordHash = passwordHash });
+
+            return _storedProcedureExecutor.ExecuteSingleOrDefault<int?>(parameters, UserStoredProcedureEnum.VerifyUserIdentity);
         }
     }
 }

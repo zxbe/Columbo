@@ -10,5 +10,6 @@ namespace Columbo.IdentityProvider.Sts.Services
     {
         UserIdentityDto GetUserIdentity(int id);
         bool IsUserIdentityActive(int id);
+        int? VerifyUserIdentity(string login, string password);
     }
 }

@@ -28,7 +28,10 @@ namespace Columbo.IdentityProvider.Sts.Stores
             var clientGuid = new Guid(clientId);
             
             var client = _storedProcedureExecutor
-                .ExecuteSingle<ClientDto>(AsParameter(clientGuid, "clientGuid"), ClientStoredProcedureEnum.GetClientByGuid);
+                .ExecuteSingleOrDefault<ClientDto>(AsParameter(clientGuid, "clientGuid"), ClientStoredProcedureEnum.GetClientByGuid);
+
+            if (client == null)
+                throw new Exception(); //todo exception
 
             var clientIdParameter = AsParameter(client.Id, "clientId");
 

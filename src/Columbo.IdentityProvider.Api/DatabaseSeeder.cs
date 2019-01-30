@@ -30,7 +30,7 @@ namespace Columbo.IdentityProvider.Api
         private void SeedUserIdentity(IDatabaseContext context, int roleId)
         {
             var user = new User(1, "Columbo", "System", "");
-            var userIdentity = new UserIdentity(1, user, "admin", "changeThis!".Sha256());
+            var userIdentity = new UserIdentity(1, user, "admin", IdentityServer4.Models.HashExtensions.Sha256("changeThis!"));
             userIdentity.AddRoles(new List<int> { roleId }, 1);
 
             if (!context.Set<UserIdentity>().Where(x => x.IsActive && x.Login.Equals(userIdentity.Login)).Any())
@@ -162,7 +162,7 @@ namespace Columbo.IdentityProvider.Api
                 new Guid("e6af38ec-9750-49c9-8351-c89e7386b1e7"),
                 "mvc",
                 "mvc test",
-                "test".Sha256(),
+                IdentityServer4.Models.HashExtensions.Sha256("test"),
                 new Uri("http://localhost:55128/signin-oidc"),
                 new Uri("http://localhost:55128"), 600, 600, 600);
 
