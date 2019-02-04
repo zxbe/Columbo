@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using static Dapper.SqlMapper;
+using System.Linq;
 
 namespace Columbo.IdentityProvider.Infrastructure
 {
@@ -29,21 +30,50 @@ namespace Columbo.IdentityProvider.Infrastructure
             }
         }
 
-        public IEnumerable<T> Execute<T>(Enum storedProcedureEnum)
+        public IEnumerable<TFirst> Execute<TFirst, TSecond>(IDynamicParameters parameters, Enum storedProcedureEnum, bool oneToMany = false, string splitOn = "Id")
         {
-            using (var sqlConnection = _sqlConnectionFactory.Create())
-            {
-                var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
-                return sqlConnection.Query<T>(procedureName, null, commandType: CommandType.StoredProcedure);
-            }
-        }
+            Func<TFirst, TSecond, TFirst> map = null;
 
-        public IEnumerable<TFirst> Execute<TFirst, TSecond>(IDynamicParameters parameters, Func<TFirst, TSecond, TFirst> map, Enum storedProcedureEnum)
-        {
+            if (oneToMany)
+            {
+                var rootObjects = new Dictionary<int, TFirst>();
+
+                map = (first, second) =>
+                {
+                    TFirst firstEntry;
+
+                    if (!rootObjects.TryGetValue(first.GetHashCode(), out firstEntry))
+                    {
+                        firstEntry = first;
+                        rootObjects.Add(firstEntry.GetHashCode(), firstEntry);
+                    }
+
+                    var collectionPropertyInfo = firstEntry.GetType().GetProperties()
+                        .Single(x => x.PropertyType.IsAssignableFrom(typeof(ICollection<TSecond>)));
+
+                    var collection = (ICollection<TSecond>)collectionPropertyInfo.GetValue(firstEntry);
+                    collection.Add(second);
+
+                    return firstEntry;
+                };
+            }
+            else
+            {
+                map = (first, second) =>
+                {
+                    var typeOfSecond = typeof(TSecond);
+
+                    var propertyOfSecondType = first.GetType().GetProperties().Single(x => x.PropertyType == typeOfSecond);
+                    propertyOfSecondType.SetValue(first, second);
+
+                    return first;
+                };
+            }
+
             using (var sqlConnection = _sqlConnectionFactory.Create())
             {
                 var procedureName = storedProcedureEnum.GetSqlScriptInfo().Name;
-                return sqlConnection.Query(procedureName, map, parameters, commandType: CommandType.StoredProcedure);
+                return sqlConnection.Query(procedureName, map, parameters, commandType: CommandType.StoredProcedure, splitOn: splitOn).Distinct();
             }
         }
 

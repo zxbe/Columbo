@@ -16,19 +16,10 @@ namespace Columbo.IdentityProvider.Infrastructure.StoredProcedures
         [SqlScript("PR_Resource_GetApiResourceByName.sql")]
         GetApiResourceByName,
 
-        [SqlScript("PR_Resource_GetApiResourceClaims.sql")]
-        GetApiResourceClaims,
-
         [SqlScript("PR_Resource_GetApiResourcesByNames.sql")]
         GetApiResourcesByNames,
 
-        [SqlScript("PR_Resource_GetApiResourcesClaims.sql")]
-        GetApiResourcesClaims,
-
         [SqlScript("PR_Resource_GetIdentityResourcesByNames.sql")]
-        GetIdentityResourcesByNames,
-
-        [SqlScript("PR_Resource_GetIdentityResourcesClaims.sql")]
-        GetIdentityResourcesClaims,
+        GetIdentityResourcesByNames
     }
 }

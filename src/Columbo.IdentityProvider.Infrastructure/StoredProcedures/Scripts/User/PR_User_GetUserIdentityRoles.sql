@@ -24,9 +24,12 @@ BEGIN
 		r.[UpdateDate],
 		r.[Name],
 		r.[InstanceId],
-		r.[RoleTypeId] RoleType
+		r.[RoleTypeId] RoleType,
+		p.Id
 	FROM [dbo].[UserRole] userRole
 	INNER JOIN [dbo].[Role] r ON userRole.RoleId = r.Id
+	INNER JOIN [dbo].[RolePermission] rolePermission ON r.Id = rolePermission.RoleId
+	INNER JOIN [dbo].[Permission] p ON rolePermission.PermissionId = p.Id
 	WHERE userRole.UserIdentityId = @userIdentityId
 END
 GO

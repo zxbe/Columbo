@@ -11,7 +11,7 @@ namespace Columbo.IdentityProvider.Api.Dtos
         public Guid ApiGuid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public InstanceDto Instance { get; set; }
+        public int InstanceId { get; set; }
         public ICollection<string> ClaimTypes { get; set; }
 
         public ApiResourceDto()

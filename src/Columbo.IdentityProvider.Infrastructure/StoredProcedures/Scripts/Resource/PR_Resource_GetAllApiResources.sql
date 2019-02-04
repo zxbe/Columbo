@@ -17,14 +17,17 @@ BEGIN
 	SET NOCOUNT ON;
 
 	SELECT
-		[Id],
-		[CreatorId],
-		[CreateDate],
-		[UpdateDate],
-		[ApiGuid],
-		[Name],
-		[Description],
-		[InstanceId]
-	FROM [dbo].[ApiResource]
+		apiResource.[Id],
+		apiResource.[CreatorId],
+		apiResource.[CreateDate],
+		apiResource.[UpdateDate],
+		apiResource.[ApiGuid],
+		apiResource.[Name],
+		apiResource.[Description],
+		apiResource.[InstanceId],
+		claim.[Type] ClaimType
+	FROM [dbo].[ApiResource] apiResource
+	INNER JOIN [dbo].[ApiResourceClaim] apiResourceClaim ON apiResource.Id = apiResourceClaim.ApiResourceId
+	INNER JOIN [dbo].[ClaimType] claim ON apiResourceClaim.ClaimTypeId = claim.Id
 END
 GO

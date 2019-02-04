@@ -9,5 +9,10 @@ namespace Columbo.Shared.Api.Dtos
         public int Id { get; set; }
         public int CreatorId { get; set; }
         public DateTime CreateDate { get; set; }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
     }
 }
