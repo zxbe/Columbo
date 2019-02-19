@@ -25,7 +25,7 @@ namespace Columbo.IdentityProvider.Sts.Controllers
             _interaction = interaction;
         }
 
-        public async Task<IActionResult> Login(string returnUrl)
+        public IActionResult Login(string returnUrl)
         {
             var model = new LoginViewModel
             {
@@ -40,8 +40,10 @@ namespace Columbo.IdentityProvider.Sts.Controllers
         {
             if (ModelState.IsValid)
             {
-                var authContext = _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-                //todo validate client from authContext
+                if (!_interaction.IsValidReturnUrl(model.ReturnUrl))
+                {
+                    return RedirectToAction("Login"); //todo notification
+                }
 
                 var userIdentityId = _userIdentityService.VerifyUserIdentity(model.Login, model.Password);
                 if (!userIdentityId.HasValue)

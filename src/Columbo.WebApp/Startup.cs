@@ -51,7 +51,7 @@ namespace Columbo.WebApp
                     options.RequireHttpsMetadata = false;
                     options.ClientId = "e6af38ec-9750-49c9-8351-c89e7386b1e7";
                     options.SaveTokens = true;
-                    options.ClientSecret = "test".Sha256();
+                    options.ClientSecret = "test";
                     options.ResponseType = "id_token";
 
                     options.Scope.Clear();

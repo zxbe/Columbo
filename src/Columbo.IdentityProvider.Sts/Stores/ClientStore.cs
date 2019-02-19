@@ -60,6 +60,7 @@ namespace Columbo.IdentityProvider.Sts.Stores
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowedScopes = scopes,
                 RequireConsent = false,
+                AlwaysIncludeUserClaimsInIdToken = true,
                 ClientSecrets = new List<Secret>()
                 {
                     new Secret(client.SecretHash)
