@@ -1,0 +1,41 @@
+version: '3.5'
+
+services:
+  columbo.identityprovider.sts:
+    build:
+      context: .
+      dockerfile: Columbo.IdentityProvider.Sts/Dockerfile
+    networks:
+      columbo-network:
+        aliases:
+          - columbo-identityprovider-sts
+
+  columbo.identityprovider.api:
+    build:
+      context: .
+      dockerfile: Columbo.IdentityProvider.Api/Dockerfile
+    networks:
+      columbo-network:
+        aliases:
+          - columbo-identityprovider-api
+
+  columbo.identityprovider.database:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    networks:
+      columbo-network:
+        aliases:
+          - columbo-identityprovider-database
+  
+  columbo.webapp:
+    build:
+      context: .
+      dockerfile: Columbo.WebApp/Dockerfile
+    networks:
+      columbo-network:
+        aliases:
+         - columbo-webapp
+
+networks:
+  columbo-network:
+    driver: "bridge"
+    name: "columbo-network"

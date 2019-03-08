@@ -39,7 +39,7 @@ namespace Columbo.IdentityProvider.Sts
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddIdentityServer()
-                .AddCertificate()
+                .AddCertificateFromFile(Configuration)
                 .AddClientStore<ClientStore>()
                 .AddResourceStore<ResourceStore>()
                 .AddProfileService<ProfileService>();

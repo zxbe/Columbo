@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Columbo.IdentityProvider.Sts.Settings;
+using Columbo.Shared.Api.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +12,7 @@ namespace Columbo.IdentityProvider.Sts.Extensions
 {
     public static class IdentityServerBuilderExtension
     {
-        public static IIdentityServerBuilder AddCertificate(this IIdentityServerBuilder identityServerBuilder)
+        public static IIdentityServerBuilder AddCertificateFromStore(this IIdentityServerBuilder identityServerBuilder)
         {
             X509Certificate2 certificate = null;
             using (var certStore = new X509Store(StoreName.My, StoreLocation.LocalMachine))
@@ -30,6 +33,16 @@ namespace Columbo.IdentityProvider.Sts.Extensions
             if (certificate == null)
                 throw new Exception(); // todo exception
 
+            identityServerBuilder.AddSigningCredential(certificate);
+
+            return identityServerBuilder;
+        }
+
+        public static IIdentityServerBuilder AddCertificateFromFile(this IIdentityServerBuilder identityServerBuilder, IConfiguration configuration)
+        {
+            var certificateInfo = configuration.GetSettings<CertificateSettings>().IdentityServerCertificate;
+            X509Certificate2 certificate = new X509Certificate2(certificateInfo.KeyFilePath, certificateInfo.Password);
+            
             identityServerBuilder.AddSigningCredential(certificate);
 
             return identityServerBuilder;

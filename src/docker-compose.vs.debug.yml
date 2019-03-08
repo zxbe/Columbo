@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+  columbo.identityprovider.sts:
+    image: columbo-identityprovider-sts:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:9001
+    container_name: columbo-identityprovider-sts-dev
+    depends_on:
+      - columbo.identityprovider.database
+    ports:
+      - "9001:9001"
+
+  columbo.identityprovider.api:
+    image: columbo-identityprovider-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:9002
+    container_name: columbo-identityprovider-api-dev
+    depends_on:
+      - columbo.identityprovider.database
+    ports:
+      - "9002:9002"
+
+  columbo.identityprovider.database:
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DevP@ssword
+    container_name: columbo-identityprovider-database-dev
+    ports:
+      - "8001:1433"
+    volumes:
+      - type: volume
+        target: /var/opt/mssql
+
+  columbo.webapp:
+    image: columbo-webapp:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:9999
+    container_name: columbo-webapp-dev
+    ports:
+      - "9999:9999"

@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.WebApp", "Columbo.W
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityProvider", "IdentityProvider", "{1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{EAE9D5A2-9463-418E-B24F-F4ED90FE1E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAE9D5A2-9463-418E-B24F-F4ED90FE1E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAE9D5A2-9463-418E-B24F-F4ED90FE1E67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

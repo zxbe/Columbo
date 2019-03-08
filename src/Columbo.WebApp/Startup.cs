@@ -41,13 +41,13 @@ namespace Columbo.WebApp
 
             services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = "Columbo.AuthenticationHandlers.Cookies"; //używany jako schemat zastępczy
-                    options.DefaultChallengeScheme = "Columbo.AuthenticationHandlers.Oidc";
+                    options.DefaultScheme = "Columbo.Cookies";
+                    options.DefaultChallengeScheme = "Columbo.Oidc";
                 })
-                .AddCookie("Columbo.AuthenticationHandlers.Cookies")
-                .AddOpenIdConnect("Columbo.AuthenticationHandlers.Oidc", options =>
+                .AddCookie("Columbo.Cookies")
+                .AddOpenIdConnect("Columbo.Oidc", options =>
                 {
-                    options.Authority = "http://localhost:55132";
+                    options.Authority = "http://192.168.0.60:9001";
                     options.RequireHttpsMetadata = false;
                     options.ClientId = "e6af38ec-9750-49c9-8351-c89e7386b1e7";
                     options.SaveTokens = true;
