@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY . .
+COPY /src .
 RUN dotnet restore Columbo.WebApp/Columbo.WebApp.csproj
 WORKDIR /src/Columbo.WebApp
 RUN dotnet build Columbo.WebApp.csproj -c Release -o /app

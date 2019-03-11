@@ -1,8 +1,8 @@
 FROM microsoft/dotnet:2.2-sdk AS build
-WORKDIR /etc/Columbo.IdentityProvider.Sts/Certifications
-COPY ./Certifications/Columbo.IdentityProvider.Sts/ .
+WORKDIR /etc/certifications/Columbo.IdentityProvider.Sts
+COPY ./certifications/Columbo.IdentityProvider.Sts/ .
 WORKDIR /src
-COPY . .
+COPY /src .
 RUN dotnet restore Columbo.IdentityProvider.Sts/Columbo.IdentityProvider.Sts.csproj
 WORKDIR /src/Columbo.IdentityProvider.Sts
 RUN dotnet build Columbo.IdentityProvider.Sts.csproj -c Release -o /app

@@ -4,7 +4,7 @@ services:
   columbo.identityprovider.sts:
     build:
       context: .
-      dockerfile: Columbo.IdentityProvider.Sts/Dockerfile
+      dockerfile: src/Columbo.IdentityProvider.Sts/Dockerfile
     networks:
       columbo-network:
         aliases:
@@ -13,7 +13,7 @@ services:
   columbo.identityprovider.api:
     build:
       context: .
-      dockerfile: Columbo.IdentityProvider.Api/Dockerfile
+      dockerfile: src/Columbo.IdentityProvider.Api/Dockerfile
     networks:
       columbo-network:
         aliases:
@@ -29,7 +29,7 @@ services:
   columbo.webapp:
     build:
       context: .
-      dockerfile: Columbo.WebApp/Dockerfile
+      dockerfile: src/Columbo.WebApp/Dockerfile
     networks:
       columbo-network:
         aliases:

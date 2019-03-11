@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Columbo.Shared.Infrastructure\Columbo.Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj" />
   </ItemGroup>
 
 </Project>

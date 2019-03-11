@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY . .
+COPY /src .
 RUN dotnet restore Columbo.IdentityProvider.Api/Columbo.IdentityProvider.Api.csproj
 WORKDIR /src/Columbo.IdentityProvider.Api
 RUN dotnet build Columbo.IdentityProvider.Api.csproj -c Release -o /app

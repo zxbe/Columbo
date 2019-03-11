@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityProvider", "IdentityProvider", "{1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Api", "src\Columbo.IdentityProvider.Api\Columbo.IdentityProvider.Api.csproj", "{964042D6-C969-45D4-A823-46B2A616E344}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Core", "src\Columbo.IdentityProvider.Core\Columbo.IdentityProvider.Core.csproj", "{A2729DF7-7608-45D2-B688-4EC736C7E06B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Infrastructure", "src\Columbo.IdentityProvider.Infrastructure\Columbo.IdentityProvider.Infrastructure.csproj", "{633FDB91-772F-4027-BA29-FFD362432265}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.IdentityProvider.Sts", "src\Columbo.IdentityProvider.Sts\Columbo.IdentityProvider.Sts.csproj", "{17254B75-1CC4-4058-8AD2-89EF56533230}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Api", "src\Columbo.Shared.Api\Columbo.Shared.Api.csproj", "{9C51826C-5F62-47C0-9A35-C7B74D346801}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Infrastructure", "src\Columbo.Shared.Infrastructure\Columbo.Shared.Infrastructure.csproj", "{25E17F13-8BB6-4657-82AB-A529BFF2B4A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.Shared.Kernel", "src\Columbo.Shared.Kernel\Columbo.Shared.Kernel.csproj", "{A022E011-F5C8-405E-AA82-132DA5DC95EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Columbo.WebApp", "src\Columbo.WebApp\Columbo.WebApp.csproj", "{A026C9B6-5FAC-4F1D-BA06-7D096AFE853D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFCB284-51E7-49C7-B787-0B614C5AFE5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964042D6-C969-45D4-A823-46B2A616E344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964042D6-C969-45D4-A823-46B2A616E344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964042D6-C969-45D4-A823-46B2A616E344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964042D6-C969-45D4-A823-46B2A616E344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2729DF7-7608-45D2-B688-4EC736C7E06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2729DF7-7608-45D2-B688-4EC736C7E06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2729DF7-7608-45D2-B688-4EC736C7E06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2729DF7-7608-45D2-B688-4EC736C7E06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{633FDB91-772F-4027-BA29-FFD362432265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{633FDB91-772F-4027-BA29-FFD362432265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{633FDB91-772F-4027-BA29-FFD362432265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{633FDB91-772F-4027-BA29-FFD362432265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17254B75-1CC4-4058-8AD2-89EF56533230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17254B75-1CC4-4058-8AD2-89EF56533230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17254B75-1CC4-4058-8AD2-89EF56533230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17254B75-1CC4-4058-8AD2-89EF56533230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C51826C-5F62-47C0-9A35-C7B74D346801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C51826C-5F62-47C0-9A35-C7B74D346801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C51826C-5F62-47C0-9A35-C7B74D346801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C51826C-5F62-47C0-9A35-C7B74D346801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E17F13-8BB6-4657-82AB-A529BFF2B4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E17F13-8BB6-4657-82AB-A529BFF2B4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E17F13-8BB6-4657-82AB-A529BFF2B4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E17F13-8BB6-4657-82AB-A529BFF2B4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A022E011-F5C8-405E-AA82-132DA5DC95EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A022E011-F5C8-405E-AA82-132DA5DC95EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A022E011-F5C8-405E-AA82-132DA5DC95EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A022E011-F5C8-405E-AA82-132DA5DC95EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A026C9B6-5FAC-4F1D-BA06-7D096AFE853D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A026C9B6-5FAC-4F1D-BA06-7D096AFE853D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A026C9B6-5FAC-4F1D-BA06-7D096AFE853D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A026C9B6-5FAC-4F1D-BA06-7D096AFE853D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{964042D6-C969-45D4-A823-46B2A616E344} = {1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}
+		{A2729DF7-7608-45D2-B688-4EC736C7E06B} = {1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}
+		{633FDB91-772F-4027-BA29-FFD362432265} = {1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}
+		{17254B75-1CC4-4058-8AD2-89EF56533230} = {1CE10DD7-FCAC-471A-857B-99EE3EBC64F0}
+		{9C51826C-5F62-47C0-9A35-C7B74D346801} = {C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}
+		{25E17F13-8BB6-4657-82AB-A529BFF2B4A6} = {C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}
+		{A022E011-F5C8-405E-AA82-132DA5DC95EC} = {C0AE5E7F-C9B5-4939-80F7-FF0DD71A0E71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67036A7F-ABC2-4FF4-83F4-27843A76BE93}
+	EndGlobalSection
+EndGlobal
